@@ -8,3 +8,4 @@ Projects
 
 - auth: Authentication Service
 - backend: Dummy backend service
+- user: User Service

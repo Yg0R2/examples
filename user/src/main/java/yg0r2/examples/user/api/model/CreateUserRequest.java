@@ -1,23 +1,21 @@
-package yg0r2.examples.auth.api.model;
+package yg0r2.examples.user.api.model;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
+import javax.validation.constraints.NotBlank;
 import java.util.Objects;
 
-@JsonDeserialize(builder = LoginRequest.Builder.class)
-public final class LoginRequest {
+@JsonDeserialize(builder = CreateUserRequest.Builder.class)
+public class CreateUserRequest {
 
+    @NotBlank
     private final String password;
+    @NotBlank
     private final String userName;
 
-    private LoginRequest(Builder builder) {
+    private CreateUserRequest(Builder builder) {
         password = Objects.requireNonNull(builder.password);
         userName = Objects.requireNonNull(builder.userName);
-    }
-
-    public LoginRequest(String password, String userName) {
-        this.password = password;
-        this.userName = userName;
     }
 
     public String getPassword() {
@@ -45,8 +43,8 @@ public final class LoginRequest {
             return this;
         }
 
-        public LoginRequest build() {
-            return new LoginRequest(this);
+        public CreateUserRequest build() {
+            return new CreateUserRequest(this);
         }
 
     }

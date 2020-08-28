@@ -1,5 +1,6 @@
-package com.yg0r2.dummy.auth.service;
+package yg0r2.examples.auth.service;
 
+import yg0r2.examples.auth.client.UserServiceClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -15,15 +16,19 @@ import java.util.Objects;
 public class UserServiceAuthenticationProvider implements AuthenticationProvider {
 
     @Autowired
-    private UserService userService;
+    private UserServiceClient userServiceClient;
 
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
-        Object password = authentication.getCredentials();
+        if (Objects.isNull(authentication.getCredentials())) {
+            return null;
+        }
+
+        String password = authentication.getCredentials().toString();
         String userName = authentication.getName();
 
-        if (Objects.isNull(password) || !userService.isExist(userName, password.toString())) {
-            return null;
+        if (!Objects.requireNonNullElse(userServiceClient.isExist(userName, password).getBody(), false)) {
+            throw new AuthenticationException("Failed to authenticate user: " + userName) {};
         }
 
         return new UsernamePasswordAuthenticationToken(userName, password, List.of(new SimpleGrantedAuthority("USER")));

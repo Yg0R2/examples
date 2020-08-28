@@ -1,4 +1,4 @@
-package com.yg0r2.dummy.auth.api.model;
+package yg0r2.examples.auth.api.model;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 

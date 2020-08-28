@@ -1,4 +1,4 @@
-package com.yg0r2.dummy.auth.web.rest;
+package yg0r2.examples.auth.web.rest;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

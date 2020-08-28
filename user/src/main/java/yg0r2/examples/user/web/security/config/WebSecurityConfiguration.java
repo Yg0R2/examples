@@ -1,6 +1,7 @@
-package yg0r2.examples.backend.web.security.config;
+package yg0r2.examples.user.web.security.config;
 
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -24,6 +25,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .sessionCreationPolicy(SessionCreationPolicy.NEVER)
                 .and()
             .authorizeRequests()
+                .antMatchers(HttpMethod.GET, "/api/user/exists").permitAll()
                 .anyRequest().authenticated();
     }
 

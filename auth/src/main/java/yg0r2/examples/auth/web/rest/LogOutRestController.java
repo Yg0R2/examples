@@ -1,4 +1,4 @@
-package com.yg0r2.dummy.auth.web.rest;
+package yg0r2.examples.auth.web.rest;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.Authentication;

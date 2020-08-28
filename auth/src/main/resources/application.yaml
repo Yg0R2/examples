@@ -1,3 +1,7 @@
+client.user.baseUrl: http://localhost:8020/api/user/exists
+
+server.port: 8010
+
 spring:
   cache.type: redis
   redis:

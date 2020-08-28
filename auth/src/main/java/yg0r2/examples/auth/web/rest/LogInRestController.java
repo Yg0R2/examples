@@ -1,7 +1,7 @@
-package com.yg0r2.dummy.auth.web.rest;
+package yg0r2.examples.auth.web.rest;
 
-import com.yg0r2.dummy.auth.api.model.LoginRequest;
-import com.yg0r2.dummy.auth.api.model.LoginResponse;
+import yg0r2.examples.auth.api.model.LoginRequest;
+import yg0r2.examples.auth.api.model.LoginResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

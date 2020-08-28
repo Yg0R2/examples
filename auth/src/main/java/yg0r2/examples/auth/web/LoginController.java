@@ -1,4 +1,4 @@
-package com.yg0r2.dummy.auth.web;
+package yg0r2.examples.auth.web;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

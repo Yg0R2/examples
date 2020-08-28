@@ -1,6 +1,6 @@
 cors.allowed-origins: "*"
 
-server.port: 9090
+server.port: 8030
 
 spring:
   cache.type: redis
