@@ -1,0 +1,9 @@
+cors.allowed-origins: "*"
+
+server.port: 9090
+
+spring:
+  cache.type: redis
+  redis:
+    host: localhost
+    port: 6379
