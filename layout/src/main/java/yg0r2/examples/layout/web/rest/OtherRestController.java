@@ -1,4 +1,4 @@
-package yg0r2.examples.auth.web.rest;
+package yg0r2.examples.layout.web.rest;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,7 +10,7 @@ public class OtherRestController {
 
     @GetMapping
     public String get() {
-        return "Hello from the Other controller.";
+        return "Hello from the Other Rest controller.";
     }
 
 }
