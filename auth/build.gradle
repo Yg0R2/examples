@@ -20,6 +20,8 @@ dependencies {
 
     implementation 'org.springframework.session:spring-session-data-redis'
 
+    implementation group: 'org.apache.httpcomponents', name: 'httpclient', version: '+'
+
     implementation group: 'javax.validation', name: 'validation-api', version:  '+'
 
     testImplementation('org.springframework.boot:spring-boot-starter-test') {

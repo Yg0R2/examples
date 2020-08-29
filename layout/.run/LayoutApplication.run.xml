@@ -1,0 +1,10 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="LayoutApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+    <module name="layout.main" />
+    <option name="SPRING_BOOT_MAIN_CLASS" value="yg0r2.examples.layout.LayoutApplication" />
+    <option name="ALTERNATIVE_JRE_PATH" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

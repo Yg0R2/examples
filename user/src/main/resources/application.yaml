@@ -1,4 +1,12 @@
-server.port: 8020
+security.require-ssl: true
+
+server:
+  ssl:
+    enabled: true
+    key-store: classpath:keystore/examples-ssl-key.p12
+    key-store-password: yg0r2-examples
+    key-store-type: PKCS12
+  port: 8020
 
 spring:
   cache.type: redis
