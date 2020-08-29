@@ -19,7 +19,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
             .httpBasic()
                 .disable()
             .formLogin()
-                .loginPage("http://localhost:8010/sign-in").permitAll()
+                .loginPage("/auth/sign-in").permitAll()
                 .and()
             .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.NEVER)

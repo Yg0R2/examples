@@ -9,4 +9,5 @@ Projects
 - auth: Authentication Service
 - backend: Dummy backend service
 - layout: Layout Service with landing page
+- nginx: Nginx config
 - user: User Service
