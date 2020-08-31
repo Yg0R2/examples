@@ -9,7 +9,7 @@ Projects
 - auth: Authentication Service
 - backend: Dummy backend service
 - layout: Layout Service with landing page
-- nginx: Nginx config
+- nginx: Nginx config and certificates
 - user: User Service
 
 Nginx
@@ -29,3 +29,9 @@ Key:
 ```
 openssl pkcs12 -info -in examples-ssl-key.p12 -out examples-ssl.key  -nodes -nocerts
 ```
+
+Docker integration
+------------------
+- Build all projects with `./gradlew bootBuildImage`
+- Start everything with `docker-compose up`
+- Open https://localhost

@@ -1,4 +1,6 @@
-client.user.baseUrl: https://localhost:8020/api/user/exists
+client.user:
+  baseUrl: https://localhost:8020
+  endpoint: ${client.user.baseUrl}/api/user/exists
 
 security.require-ssl: true
 

@@ -16,11 +16,11 @@ public class UserServiceClient {
     @Autowired
     private RestTemplate restTemplate;
 
-    @Value("${client.user.baseUrl}")
-    private String userServiceBaseUrl;
+    @Value("${client.user.endpoint}")
+    private String userServiceUrl;
 
     public ResponseEntity<Boolean> isExist(String userName, String password) {
-        String url = UriComponentsBuilder.fromHttpUrl(userServiceBaseUrl)
+        String url = UriComponentsBuilder.fromHttpUrl(userServiceUrl)
             .queryParam("userName", userName)
             .queryParam("password", password)
             .toUriString();

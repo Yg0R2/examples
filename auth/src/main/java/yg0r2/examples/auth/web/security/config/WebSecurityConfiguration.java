@@ -39,13 +39,14 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .disable()
 //                .and()
             .formLogin()
-                .loginPage("/sign-in").permitAll()
+                .loginPage("https://localhost/auth/sign-in").permitAll()
                 .and()
             .logout()
                 .permitAll()
                 .and()
             .authorizeRequests()
                 .antMatchers(HttpMethod.GET, "/").permitAll()
+                .antMatchers(HttpMethod.GET, "/sign-in").permitAll()
                 .antMatchers(HttpMethod.POST, "/api/login").permitAll()
                 .anyRequest().authenticated();
     }
