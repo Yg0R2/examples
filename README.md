@@ -10,6 +10,8 @@ Projects
 - backend: Dummy backend service
 - layout: Layout Service with landing page
 - nginx: Nginx config and certificates
+- ui: UI module for React testing
+- ui-core: UI module for library testing
 - user: User Service
 
 Nginx

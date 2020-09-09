@@ -1,0 +1,43 @@
+{
+  "name": "@examples/ui-core",
+  "version": "0.1.0",
+  "main": "build/main.js",
+  "dependencies": {
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-scripts": "3.4.3"
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.10.4",
+    "@babel/plugin-proposal-export-default-from": "^7.10.4",
+    "@babel/preset-env": "^7.11.5",
+    "@babel/preset-react": "^7.10.4",
+    "@babel/runtime": "^7.11.2",
+    "@rollup/plugin-babel": "^5.2.0",
+    "@rollup/plugin-commonjs": "^15.0.0",
+    "@rollup/plugin-node-resolve": "^9.0.0",
+    "del-cli": "^3.0.1",
+    "rollup": "^2.26.11"
+  },
+  "scripts": {
+    "prebuild": "del-cli --force ./build",
+    "build": "rollup -c",
+    "start": "rollup -c -w",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "files": [
+    "build/",
+    "LICENSE"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Yg0R2/examples.git"
+  },
+  "keywords": [],
+  "author": "Yg0R2",
+  "license": "SEE LICENSE IN LICENSE",
+  "bugs": {
+    "url": "https://github.com/Yg0R2/eazyportal-core-ui/issues"
+  },
+  "homepage": "https://github.com/Yg0R2/eazyportal-core-ui#readme"
+}
