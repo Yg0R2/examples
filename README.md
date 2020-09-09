@@ -8,6 +8,7 @@ Projects
 
 - auth: Authentication Service
 - backend: Dummy backend service
+- gradle-plugin: Plugin for Gradle
 - layout: Layout Service with landing page
 - nginx: Nginx config and certificates
 - ui: UI module for React testing
