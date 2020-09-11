@@ -1,6 +1,7 @@
 package yg0r2.examples.generate
 
 import org.gradle.api.DefaultTask
+import org.gradle.api.provider.Property
 import org.gradle.api.tasks.Input
 import org.gradle.api.tasks.OutputDirectory
 import org.gradle.api.tasks.TaskAction
@@ -8,10 +9,10 @@ import java.io.File
 
 open class GenerateTask : DefaultTask() {
 
-    var fileCount: Int = 0
+    val fileCount: Property<Int> = project.objects.property(Int::class.java)
         @Input get
 
-    var content: String = ""
+    val content: Property<String> = project.objects.property(String::class.java)
         @Input get
 
     var generatedFileDir: File = project.buildDir
@@ -19,8 +20,8 @@ open class GenerateTask : DefaultTask() {
 
     @TaskAction
     fun perform() {
-        for (i in 0..fileCount) {
-            writeFile(generatedFileDir.resolve("$i.txt"), content)
+        for (i in 1..fileCount.get()) {
+            writeFile(generatedFileDir.resolve("$i.txt"), content.get())
         }
     }
 

@@ -1,13 +1,12 @@
 package yg0r2.examples.generate
 
-import org.gradle.api.Action
+import org.gradle.api.Project
+import org.gradle.api.provider.Property
 
-open class FileDataExtension {
+open class FileDataExtension(project: Project) {
 
-    val fileData: FileData = FileData()
+    val fileCount: Property<Int> = project.objects.property(Int::class.java)
 
-    fun fileData(action: Action<in FileData>) {
-        action.execute(fileData)
-    }
+    val content: Property<String> = project.objects.property(String::class.java)
 
 }

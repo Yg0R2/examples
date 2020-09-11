@@ -19,8 +19,11 @@ class MyPlugin : Plugin<Project> {
 
         //project.dependencies.add()
 
-        project.extensions.create("fileData", FileDataExtension::class.java)
-        project.tasks.register("generate", GenerateTask::class.java)
+        val fileDataExtension = project.extensions.create("fileData", FileDataExtension::class.java, project)
+        project.tasks.register("generate", GenerateTask::class.java) {
+            content.set(fileDataExtension.content)
+            fileCount.set(fileDataExtension.fileCount)
+        }
     }
 
 }
