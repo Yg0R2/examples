@@ -17,6 +17,12 @@ class MyPlugin : Plugin<Project> {
         project.plugins.apply(DependencyManagementPlugin::class.java)
         project.plugins.apply(JavaPlugin::class.java)
 
+        // Execute in case of JavaPlugin present
+        val javaPluginAction = Action<JavaPlugin> {
+            println("Jee JavaPlugin found :)")
+        }
+        project.plugins.withType(JavaPlugin::class.java, javaPluginAction)
+
         //project.dependencies.add()
 
         val fileDataExtension = project.extensions.create("fileData", FileDataExtension::class.java, project)
