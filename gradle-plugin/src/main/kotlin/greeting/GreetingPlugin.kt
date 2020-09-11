@@ -7,7 +7,7 @@ import org.gradle.kotlin.dsl.extra
 class GreetingPlugin : Plugin<Project> {
 
     override fun apply(project: Project) {
-        val extension = project.extensions.create<GreetingPluginExtension>("greeting", GreetingPluginExtension::class.java)
+        val extension = project.extensions.create("greeting", GreetingPluginExtension::class.java)
 
         project.task("hello") {
             doLast {

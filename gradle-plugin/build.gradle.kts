@@ -2,7 +2,7 @@ version = "0.0.1-SNAPSHOT"
 group = "yg0r2.examples"
 
 plugins {
-    kotlin("jvm") version "1.4.10"
+    kotlin("jvm") version "1.3.72"
     jacoco
     `java-gradle-plugin`
     `kotlin-dsl`
@@ -26,11 +26,18 @@ gradlePlugin {
             id = "yg0r2.examples.greeting"
             implementationClass = "greeting.GreetingPlugin"
         }
+        create("myDependencies") {
+            id = "yg0r2.examples.dependency"
+            implementationClass = "yg0r2.examples.MyPlugin"
+        }
     }
 }
 
 dependencies {
-    testImplementation("org.junit.jupiter", "junit-jupiter-engine", "5.5.2")
+    api("org.springframework.boot", "spring-boot-gradle-plugin", "2.3.3.RELEASE")
+    api("io.spring.gradle", "dependency-management-plugin", "1.0.10.RELEASE")
+
+    testImplementation("org.junit.jupiter", "junit-jupiter-engine", "5.6.2")
 }
 
 tasks {
