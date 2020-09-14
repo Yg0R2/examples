@@ -4,9 +4,8 @@ import io.spring.gradle.dependencymanagement.DependencyManagementPlugin
 import org.gradle.api.Action
 import org.gradle.api.Plugin
 import org.gradle.api.Project
-import org.gradle.api.artifacts.DependencySet
 import org.gradle.api.plugins.JavaPlugin
-import org.gradle.kotlin.dsl.add
+import org.gradle.kotlin.dsl.exclude
 import org.springframework.boot.gradle.plugin.SpringBootPlugin
 import yg0r2.examples.generate.FileDataExtension
 import yg0r2.examples.generate.GenerateTask
@@ -36,6 +35,25 @@ class MyPlugin : Plugin<Project> {
                 project.dependencies.create("org.springframework.session:spring-session-data-redis")
             ))
         }
+
+        project.configurations.getByName("testImplementation").defaultDependencies {
+            addAll(listOf(
+                project.dependencies.create("org.springframework.boot:spring-boot-starter-test")
+            ))
+        }
+        // Excluding dependency https://docs.gradle.org/current/userguide/resolution_rules.html
+        project.configurations.all {
+            mapOf("org.junit.vintage" to "junit-vintage-engine").forEach {
+                (k, v) -> exclude(k, v)
+            }
+        }
+
+        // Gradle automatically use `junit-jupiter` from any (transitive) dependencies instead of `junit`
+//        project.dependencies.modules {
+//            module("junit:junit") {
+//                replacedBy("org.junit.jupiter:junit-jupiter", "junit is deprecated, have to use junit-jupiter")
+//            }
+//        }
 
         val fileDataExtension = project.extensions.create("fileData", FileDataExtension::class.java, project)
         project.tasks.register("generate", GenerateTask::class.java) {
