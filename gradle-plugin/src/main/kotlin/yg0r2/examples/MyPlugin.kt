@@ -2,12 +2,13 @@ package yg0r2.examples
 
 import io.spring.gradle.dependencymanagement.DependencyManagementPlugin
 import org.gradle.api.Action
+import org.gradle.api.JavaVersion
 import org.gradle.api.Plugin
 import org.gradle.api.Project
-import org.gradle.api.artifacts.dsl.RepositoryHandler
-import org.gradle.api.internal.artifacts.repositories.DefaultMavenLocalArtifactRepository
 import org.gradle.api.plugins.JavaPlugin
+import org.gradle.api.plugins.JavaPluginConvention
 import org.gradle.api.tasks.testing.Test
+import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.exclude
 import org.springframework.boot.gradle.plugin.SpringBootPlugin
 import yg0r2.examples.generate.FileDataExtension
@@ -68,6 +69,13 @@ class MyPlugin : Plugin<Project> {
         project.tasks.named("test", Test::class.java) {
             useJUnitPlatform()
         }
+
+        project.configure<JavaPluginConvention> {
+            sourceCompatibility = JavaVersion.VERSION_11
+            targetCompatibility = JavaVersion.VERSION_11
+        }
+
+        project.group = "yg0r2.examples"
     }
 
 }
