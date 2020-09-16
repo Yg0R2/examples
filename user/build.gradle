@@ -2,4 +2,3 @@ plugins {
     id 'yg0r2.examples.dependency' version '0.0.1-SNAPSHOT'
 }
 
-version = '0.0.1-SNAPSHOT'

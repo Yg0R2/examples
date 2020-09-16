@@ -10,6 +10,10 @@ import org.gradle.api.Project
 import org.gradle.api.plugins.JavaLibraryPlugin
 import org.gradle.api.plugins.JavaPlugin
 import org.gradle.api.plugins.JavaPluginConvention
+import org.gradle.api.plugins.JavaPluginExtension
+import org.gradle.api.publish.PublishingExtension
+import org.gradle.api.publish.maven.MavenPublication
+import org.gradle.api.publish.maven.plugins.MavenPublishPlugin
 import org.gradle.api.tasks.bundling.Jar
 import org.gradle.api.tasks.testing.Test
 import org.gradle.kotlin.dsl.configure
@@ -56,6 +60,39 @@ class MyPlugin : Plugin<Project> {
 
         val apiProject = getSubProject(project.subprojects, "api")
         apiProject.ifPresent {
+            it.plugins.apply {
+                apply(MavenPublishPlugin::class.java)
+            }
+
+            it.extensions.getByType(JavaPluginExtension::class.java).apply {
+                withSourcesJar()
+            }
+
+            it.extensions.getByType(PublishingExtension::class.java).apply {
+                publications {
+                    create<MavenPublication>("maven") {
+                        groupId = project.group.toString()
+                        artifactId = project.name
+                        version = project.version.toString()
+
+                        from(it.components.getByName("java"))
+
+                        versionMapping {
+                            usage("java-api") {
+                                fromResolutionOf("runtimeClasspath")
+                            }
+                            usage("java-runtime") {
+                                fromResolutionResult()
+                            }
+                        }
+                    }
+                }
+
+                repositories {
+                    mavenLocal()
+                }
+            }
+
             getDependencySet(it, "api").apply {
                 add(it.dependencies.create("javax.validation", "validation-api", "+"))
             }
@@ -69,6 +106,10 @@ class MyPlugin : Plugin<Project> {
 
         val clientProject = getSubProject(project.subprojects, "client")
         clientProject.ifPresent {
+            it.plugins.apply {
+                apply(MavenPublishPlugin::class.java)
+            }
+
             getDependencySet(it, "api").apply {
                 apiProject.ifPresent { project -> add(it.dependencies.create(project)) }
             }
