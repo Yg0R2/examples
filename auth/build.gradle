@@ -3,9 +3,3 @@ plugins {
 }
 
 version = '0.0.1-SNAPSHOT'
-
-dependencies {
-    implementation group: 'org.apache.httpcomponents', name: 'httpclient', version: '+'
-
-    implementation group: 'javax.validation', name: 'validation-api', version:  '+'
-}

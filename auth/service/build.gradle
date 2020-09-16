@@ -1,0 +1,4 @@
+dependencies {
+    // Added because of the user client implementation is here
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web'
+}
