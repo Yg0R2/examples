@@ -2,7 +2,8 @@ version = "0.0.1-SNAPSHOT"
 group = "yg0r2.examples"
 
 plugins {
-    kotlin("jvm") version "1.3.72"
+    kotlin("jvm") version "1.4.0"
+    kotlin("plugin.serialization") version "1.4.0"
     jacoco
     `java-gradle-plugin`
     `kotlin-dsl`
@@ -36,6 +37,9 @@ gradlePlugin {
 dependencies {
     api("org.springframework.boot", "spring-boot-gradle-plugin", "2.3.3.RELEASE")
     api("io.spring.gradle", "dependency-management-plugin", "1.0.10.RELEASE")
+
+    implementation(kotlin("stdlib", org.jetbrains.kotlin.config.KotlinCompilerVersion.VERSION)) // or "stdlib-jdk8"
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-core:1.0.0-RC") // JVM dependency
 
     testImplementation("org.junit.jupiter", "junit-jupiter-engine", "5.6.2")
 }

@@ -1,6 +1,8 @@
 package yg0r2.examples
 
 import io.spring.gradle.dependencymanagement.DependencyManagementPlugin
+import kotlinx.serialization.decodeFromString
+import kotlinx.serialization.json.Json
 import org.gradle.api.Action
 import org.gradle.api.JavaVersion
 import org.gradle.api.Plugin
@@ -13,14 +15,29 @@ import org.gradle.kotlin.dsl.exclude
 import org.springframework.boot.gradle.plugin.SpringBootPlugin
 import yg0r2.examples.generate.FileDataExtension
 import yg0r2.examples.generate.GenerateTask
+import yg0r2.examples.model.Dependency
+import java.lang.IllegalArgumentException
 
 class MyPlugin : Plugin<Project> {
 
     override fun apply(project: Project) {
+        project.group = "yg0r2.examples"
+
         // Depending on other plugin
-        project.plugins.apply(SpringBootPlugin::class.java)
-        project.plugins.apply(DependencyManagementPlugin::class.java)
-        project.plugins.apply(JavaPlugin::class.java)
+        project.allprojects.forEach {
+            if (!it.name.endsWith("ui")) {
+                it.plugins.apply {
+                    apply(DependencyManagementPlugin::class.java)
+                    apply(JavaPlugin::class.java)
+                    apply(SpringBootPlugin::class.java)
+                }
+
+                it.repositories.addAll(listOf(
+                    project.repositories.mavenLocal(),
+                    project.repositories.mavenCentral()
+                ))
+            }
+        }
 
         // Execute in case of JavaPlugin present
         val javaPluginAction = Action<JavaPlugin> {
@@ -41,10 +58,12 @@ class MyPlugin : Plugin<Project> {
         project.configurations.getByName("testImplementation").dependencies.addAll(listOf(
             project.dependencies.create("org.springframework.boot:spring-boot-starter-test")
         ))
+
         // Excluding dependency https://docs.gradle.org/current/userguide/resolution_rules.html
+        val excludedDependencies = readJsonResource<List<Dependency>>("excludedDependencies.json")
         project.configurations.all {
-            mapOf("org.junit.vintage" to "junit-vintage-engine").forEach {
-                (k, v) -> exclude(k, v)
+            excludedDependencies.forEach {
+                exclude(it.group, it.module)
             }
         }
 
@@ -74,8 +93,12 @@ class MyPlugin : Plugin<Project> {
             sourceCompatibility = JavaVersion.VERSION_11
             targetCompatibility = JavaVersion.VERSION_11
         }
+    }
 
-        project.group = "yg0r2.examples"
+    private inline fun <reified T> readJsonResource(resourcePath: String): T {
+        val url = javaClass.classLoader.getResource(resourcePath) ?: throw IllegalArgumentException("Resource does not exist: $resourcePath")
+
+        return Json.decodeFromString(url.readText())
     }
 
 }
