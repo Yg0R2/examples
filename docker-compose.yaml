@@ -8,49 +8,34 @@ services:
       - user
     environment:
       - CLIENT_USER_BASEURL=https://host.docker.internal:8020 # Have to use this, because of the generated self signed cert.
-#      - CLIENT_USER_BASEURL=https://user:8020
-      - SPRING_REDIS_HOST=redis
-#    env_file:
-#      - ssl-config.env
+    extends:
+      file: _common.yaml
+      service: common-ssl-microservice
     image: auth:0.0.1-SNAPSHOT
-    networks:
-      - example-network
     ports:
       - 8010:8010
-    volumes:
-      - keystore-volume:/workspace/BOOT-INF/classes/keystore/:ro
 
   backend:
     container_name: backend
     depends_on:
       - redis
-    environment:
-      - SPRING_REDIS_HOST=redis
-#    env_file:
-#      - ssl-config.env
+    extends:
+      file: _common.yaml
+      service: common-ssl-microservice
     image: backend:0.0.1-SNAPSHOT
-    networks:
-      - example-network
     ports:
       - 8030:8030
-    volumes:
-      - keystore-volume:/workspace/BOOT-INF/classes/keystore/:ro
 
   layout:
     container_name: layout
     depends_on:
       - redis
-    environment:
-      - SPRING_REDIS_HOST=redis
-#    env_file:
-#      - ssl-config.env
+    extends:
+      file: _common.yaml
+      service: common-ssl-microservice
     image: layout:0.0.1-SNAPSHOT
-    networks:
-      - example-network
     ports:
       - 8000:8000
-    volumes:
-      - keystore-volume:/workspace/BOOT-INF/classes/keystore/:ro
 
   nginx:
     container_name: nginx
@@ -81,15 +66,10 @@ services:
     container_name: user
     depends_on:
       - redis
-    environment:
-      - SPRING_REDIS_HOST=redis
-#    env_file:
-#      - ssl-config.env
+    extends:
+      file: _common.yaml
+      service: common-ssl-microservice
     image: user:0.0.1-SNAPSHOT
-    networks:
-      - example-network
     ports:
       - 8020:8020
-    volumes:
-      - keystore-volume:/workspace/BOOT-INF/classes/keystore/:ro
 

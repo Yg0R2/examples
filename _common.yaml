@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  common-ssl-microservice:
+    environment:
+      - SPRING_REDIS_HOST=redis
+  #  env_file:
+  #    - ssl-config.env
+    networks:
+      - example-network
+    volumes:
+      - keystore-volume:/workspace/BOOT-INF/classes/keystore/:ro
