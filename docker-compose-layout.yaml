@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  layout:
+    container_name: layout
+    extends:
+      file: _common.yaml
+      service: common-ssl-microservice
+    external_links:
+      - redis
+    image: layout:0.0.1-SNAPSHOT
+    ports:
+      - 8000:8000
+
+volumes:
+  keystore-volume:
+    external: true
+    name: keystore-volume
+
+networks:
+  example-network:
+    external: true
+    name: example-network
