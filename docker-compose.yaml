@@ -1,12 +1,5 @@
 version: '3.8'
 
-x-keystore-volume: &keystore-volume
-  type: bind
-  read_only: true
-  source: ./nginx/cert
-  volume:
-    nocopy: true
-
 services:
   auth:
     container_name: auth
@@ -23,8 +16,7 @@ services:
     ports:
       - 8010:8010
     volumes:
-      - <<: *keystore-volume
-        target: /workspace/BOOT-INF/classes/keystore/
+      - keystore-volume:/workspace/BOOT-INF/classes/keystore/:ro
 
   backend:
     container_name: backend
@@ -38,8 +30,7 @@ services:
     ports:
       - 8030:8030
     volumes:
-      - <<: *keystore-volume
-        target: /workspace/BOOT-INF/classes/keystore/
+      - keystore-volume:/workspace/BOOT-INF/classes/keystore/:ro
 
   layout:
     container_name: layout
@@ -53,8 +44,7 @@ services:
     ports:
       - 8000:8000
     volumes:
-      - <<: *keystore-volume
-        target: /workspace/BOOT-INF/classes/keystore/
+      - keystore-volume:/workspace/BOOT-INF/classes/keystore/:ro
 
   nginx:
     container_name: nginx
@@ -69,8 +59,7 @@ services:
         target: /etc/nginx/conf.d/default.conf
         volume:
           nocopy: true
-      - <<: *keystore-volume
-        target: /etc/nginx/ssl
+      - keystore-volume:/etc/nginx/ssl
 
   redis:
     container_name: redis
@@ -90,5 +79,5 @@ services:
     ports:
       - 8020:8020
     volumes:
-      - <<: *keystore-volume
-        target: /workspace/BOOT-INF/classes/keystore/
+      - keystore-volume:/workspace/BOOT-INF/classes/keystore/:ro
+

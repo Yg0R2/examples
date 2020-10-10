@@ -1,0 +1,10 @@
+version: "3.8"
+
+volumes:
+  keystore-volume:
+    driver: local
+    name: keystore-volume
+    driver_opts:
+      device: /host_mnt/w/Projects/examples/nginx/cert/
+      type: none
+      o: bind
