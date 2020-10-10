@@ -1,5 +1,10 @@
 version: "3.8"
 
+networks:
+  example-network:
+    name: example-network
+    driver: bridge
+
 volumes:
   keystore-volume:
     driver: local
