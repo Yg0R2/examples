@@ -19,7 +19,9 @@ import org.gradle.api.tasks.testing.Test
 import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.create
 import org.gradle.kotlin.dsl.exclude
+import org.gradle.kotlin.dsl.withType
 import org.springframework.boot.gradle.plugin.SpringBootPlugin
+import org.springframework.boot.gradle.tasks.bundling.BootBuildImage
 import org.springframework.boot.gradle.tasks.bundling.BootJar
 import yg0r2.examples.generate.FileDataExtension
 import yg0r2.examples.generate.GenerateTask
@@ -49,6 +51,10 @@ class MyPlugin : Plugin<Project> {
         }
 
         project.subprojects.forEach {
+            it.tasks.named("bootBuildImage", BootBuildImage::class.java) {
+                enabled = false
+            }
+
             it.tasks.named("bootJar", BootJar::class.java) {
                 enabled = false
             }
