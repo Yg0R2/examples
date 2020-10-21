@@ -14,14 +14,13 @@ services:
       - redis
       - user
     environment:
-      - CLIENT_USER_BASEURL=https://host.docker.internal:8020 # Have to use this, because of the generated self signed cert.
-#      - CLIENT_USER_BASEURL=https://user:8020
+      - CLIENT_USER_BASEURL=http://user:8080
+      - SERVER_PORT=8080
+      - SERVER_SSL_ENABLED=false
       - SPRING_REDIS_HOST=redis
-#    env_file:
-#      - ssl-config.env
     image: auth:0.0.1-SNAPSHOT
-    ports:
-      - 8010:8010
+#    ports:
+#      - 8010:8010
     volumes:
       - <<: *keystore-volume
         target: /workspace/BOOT-INF/classes/keystore/
@@ -31,12 +30,12 @@ services:
     depends_on:
       - redis
     environment:
+      - SERVER_PORT=8080
+      - SERVER_SSL_ENABLED=false
       - SPRING_REDIS_HOST=redis
-#    env_file:
-#      - ssl-config.env
     image: backend:0.0.1-SNAPSHOT
-    ports:
-      - 8030:8030
+#    ports:
+#      - 8030:8030
     volumes:
       - <<: *keystore-volume
         target: /workspace/BOOT-INF/classes/keystore/
@@ -46,12 +45,12 @@ services:
     depends_on:
       - redis
     environment:
+      - SERVER_PORT=8080
+      - SERVER_SSL_ENABLED=false
       - SPRING_REDIS_HOST=redis
-#    env_file:
-#      - ssl-config.env
     image: layout:0.0.1-SNAPSHOT
-    ports:
-      - 8000:8000
+#    ports:
+#      - 8000:8000
     volumes:
       - <<: *keystore-volume
         target: /workspace/BOOT-INF/classes/keystore/
@@ -60,7 +59,7 @@ services:
     container_name: nginx
     image: nginx:alpine
     ports:
-#      - 80:80
+      - 80:80
       - 443:443
     volumes:
       - type: bind
@@ -75,20 +74,20 @@ services:
   redis:
     container_name: redis
     image: redis:alpine
-    ports:
-      - 6379:6379
+#    ports:
+#      - 6379:6379
 
   user:
     container_name: user
     depends_on:
       - redis
     environment:
+      - SERVER_PORT=8080
+      - SERVER_SSL_ENABLED=false
       - SPRING_REDIS_HOST=redis
-#    env_file:
-#      - ssl-config.env
     image: user:0.0.1-SNAPSHOT
-    ports:
-      - 8020:8020
+#    ports:
+#      - 8020:8020
     volumes:
       - <<: *keystore-volume
         target: /workspace/BOOT-INF/classes/keystore/
