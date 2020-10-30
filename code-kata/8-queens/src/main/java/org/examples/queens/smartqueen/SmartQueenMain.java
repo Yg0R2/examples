@@ -5,32 +5,45 @@ import java.util.List;
 
 public class SmartQueenMain {
 
-    public List<Queen> execute(int size) {
-        return execute(new ArrayList<>(size), size, 0, 0);
+    private final int size;
+    private final List<List<Queen>> solutions;
+
+    public SmartQueenMain(int size) {
+        this.size = size;
+        solutions = new ArrayList<>();
     }
 
-    private List<Queen> execute(List<Queen> queens, int size, int x, int y) {
-        for (int i = y; i < size; i++) {
-            if (QueenUtils.canPlace(queens, x, i)) {
-                queens.add(new Queen(x, i));
+    public List<List<Queen>> execute() {
+        execute(new ArrayList<>(size), 0);
 
-                return execute(queens, size, x + 1, 0);
+        return solutions;
+    }
+
+    private void execute(List<Queen> queens, int x) {
+        for (int y = 0; y < size; y++) {
+            if (QueenUtils.canPlace(queens, x, y)) {
+                queens.add(new Queen(x, y));
+
+                if (x + 1 < size) {
+                    execute(queens, x + 1);
+                }
+                else {
+                    solutions.add(List.copyOf(queens));
+                }
+
+                queens.remove(x);
             }
         }
-
-        if (queens.size() < size) {
-            Queen lastQueen = queens.remove(queens.size() - 1);
-
-            return execute(queens, size, lastQueen.getX(), lastQueen.getY() + 1);
-        }
-
-        return queens;
     }
 
     public static void main(String[] args) {
-        SmartQueenMain instance = new SmartQueenMain();
+        SmartQueenMain instance = new SmartQueenMain(8);
 
-        System.out.println(instance.execute(8));
+        List<List<Queen>> solutions = instance.execute();
+        solutions
+            .forEach(System.out::println);
+
+        System.out.printf("Found solutions: %s", solutions.size());
     }
 
 }
