@@ -3,8 +3,8 @@ security.require-ssl: true
 server:
   ssl:
     enabled: true
-    key-store: classpath:keystore/examples-ssl-key.p12
-    key-store-password: yg0r2-examples
+    key-store: classpath:keystore/localhost.p12
+    key-store-password:
     key-store-type: PKCS12
   port: 8000
 
