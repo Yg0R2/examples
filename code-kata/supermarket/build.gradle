@@ -1,0 +1,26 @@
+plugins {
+    id 'java'
+}
+
+group 'org.examples'
+version '0.0.1-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+test {
+    useJUnitPlatform()
+}
+
+dependencies {
+    implementation group: 'org.apache.commons', name: 'commons-lang3', version: '+'
+
+    testImplementation group: 'org.assertj', name: 'assertj-core', version: '+'
+
+    testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '+'
+    testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-params', version: '+'
+
+    testImplementation group: 'org.mockito', name: 'mockito-core', version: '+'
+
+}
