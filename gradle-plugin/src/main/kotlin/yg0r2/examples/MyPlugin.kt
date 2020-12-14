@@ -19,7 +19,6 @@ import org.gradle.api.tasks.testing.Test
 import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.create
 import org.gradle.kotlin.dsl.exclude
-import org.gradle.kotlin.dsl.withType
 import org.springframework.boot.gradle.plugin.SpringBootPlugin
 import org.springframework.boot.gradle.tasks.bundling.BootBuildImage
 import org.springframework.boot.gradle.tasks.bundling.BootJar
@@ -205,8 +204,8 @@ class MyPlugin : Plugin<Project> {
         }
 
         project.configure<JavaPluginConvention> {
-            sourceCompatibility = JavaVersion.VERSION_11
-            targetCompatibility = JavaVersion.VERSION_11
+            sourceCompatibility = JavaVersion.VERSION_15
+            targetCompatibility = JavaVersion.VERSION_15
         }
     }
 
