@@ -9,7 +9,6 @@ server:
   port: 8020
 
 spring:
-  cache.type: redis
   datasource:
     driverClassName: org.h2.Driver
     url: jdbc:h2:./build/test;DB_CLOSE_ON_EXIT=FALSE
@@ -18,3 +17,5 @@ spring:
   redis:
     host: localhost
     port: 6379
+  session:
+    store-type: redis
