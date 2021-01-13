@@ -1,0 +1,18 @@
+pipeline {
+    agent {
+        node {
+          label 'master'
+          customWorkspace 'w:\\projects\\examples\\jenkins-pipeline'
+        }
+    }
+
+    stages {
+        stage('Build') {
+            steps {
+                bat ('./gradlew clean build')
+
+                jacoco classPattern: '**/jacoco/classes'
+            }
+        }
+    }
+}
