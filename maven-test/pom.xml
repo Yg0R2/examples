@@ -17,4 +17,10 @@
         </plugins>
     </build>
 
+    <scm>
+        <url>https://github.com/Yg0R2/examples.git</url>
+        <connection>scm:git:https://github.com/Yg0R2/examples.git</connection>
+        <tag>maven</tag>
+    </scm>
+
 </project>
