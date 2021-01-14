@@ -1,0 +1,102 @@
+#!/usr/bin/env groovy
+
+pipeline {
+    agent {
+        node {
+            label 'master'
+            customWorkspace 'w:\\tmp\\jenkins\\examples\\'
+        }
+    }
+    //agent any
+
+    options {
+        disableConcurrentBuilds()
+
+        timestamps()
+
+        timeout(time: 10, unit: 'MINUTES')
+    }
+
+    parameters {
+        booleanParam(name: 'RELEASE', defaultValue: false, description: 'Perform release')
+        string(name: 'RELEASE_VERSION', defaultValue: '', description: 'Release version')
+        string(name: 'RELEASE_NEXT_DEV_VERSION', defaultValue: '', description: 'Next development version')
+    }
+
+    stages {
+        stage('Preparation') {
+            steps {
+                script {
+                    if (params.RELEASE) {
+                        requiredNotNullOrEmpty('RELEASE_VERSION', params.RELEASE_VERSION)
+                        requiredNotNullOrEmpty('RELEASE_NEXT_DEV_VERSION', params.RELEASE_NEXT_DEV_VERSION)
+                    }
+                }
+
+                exec 'SET'
+
+                exec "mvn clean"
+            }
+        }
+
+        stage('Compile') {
+            steps {
+                exec "mvn compile"
+            }
+        }
+
+        stage('Build') {
+            steps {
+                exec "mvn deploy"
+            }
+        }
+
+        stage('Test') {
+            steps {
+                exec "mvn test"
+            }
+        }
+
+        stage('Release') {
+            when {
+                expression {
+                    return params.RELEASE
+                }
+            }
+            steps {
+                script {
+                    currentBuild.displayName = "${env.BUILD_DISPLAY_NAME} ${params.RELEASE_VERSION}"
+                    currentBuild.description = "Release ${params.RELEASE_VERSION}"
+                }
+
+                exec "mvn versions:set -DnewVersion=${params.RELEASE_VERSION}"
+
+                exec 'git add pom.xml **/pom.xml'
+                exec "git commit -m \"[maven-release-plugin] Release ${params.RELEASE_VERSION}\""
+                exec "git tag ${params.RELEASE_VERSION}"
+
+                exec "git push origin HEAD:refs/heads/${env.BRANCH_NAME}"
+                exec "git push origin refs/tags/${params.RELEASE_VERSION}"
+
+                exec "mvn deploy -DskipTests -DskipITs -DscmBranch=${env.GIT_BRANCH} -DscmCommit=${env.GIT_COMMIT} -DbuildNumber=${env.BUILD_NUMBER}"
+
+                exec "mvn versions:set -DnewVersion=${params.RELEASE_NEXT_DEV_VERSION}"
+                exec 'git add pom.xml **/pom.xml'
+                exec "git commit -m \"[maven-release-plugin] Prepare for next development iteration\""
+                exec "git push origin HEAD:refs/heads/${env.BRANCH_NAME}"
+            }
+        }
+    }
+}
+
+def exec(String command) {
+    dir('maven-test') {
+        bat command
+    }
+}
+
+def requiredNotNullOrEmpty(String name, String value) {
+    if ((value == null) || (value == 'null') || value.trim().isEmpty()) {
+        error "Parameter '${name}' required to have value."
+    }
+}
