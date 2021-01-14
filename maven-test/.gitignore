@@ -1,0 +1,11 @@
+### Maven ###
+pom.xml.releaseBackup
+release.properties
+target/
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+out/
