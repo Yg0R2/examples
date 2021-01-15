@@ -3,13 +3,3 @@ pom.xml.releaseBackup
 pom.xml.versionsBackup
 release.properties
 target/
-
-### IntelliJ IDEA ###
-.idea
-*.iws
-*.iml
-*.ipr
-out/
-
-### Jenkins ###
-*@tmp/

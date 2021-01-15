@@ -8,3 +8,6 @@ build/
 *.iml
 *.ipr
 out/
+
+### Jenkins ###
+*@tmp/

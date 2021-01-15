@@ -9,11 +9,17 @@ Projects
 - auth: Authentication Service
 - backend: Dummy backend service
 - gradle-plugin: Plugin for Gradle
+- jenkins-pipeline: Centralized Jenkins pipeline implementation
 - layout: Layout Service with landing page
 - nginx: Nginx config and certificates
 - ui: UI module for React testing
 - ui-core: UI module for library testing
 - user: User Service
+
+### Standalone projects
+
+- code-kata: Sample projects for practice
+- maven-test: Test maven project with Docker and Jenkins pipeline integration
 
 Nginx
 -----
@@ -38,3 +44,14 @@ Docker integration
 - Build all projects with `./gradlew bootBuildImage`
 - Start everything with `docker-compose up`
 - Open https://localhost
+
+Jenkins Pipeline
+----------------
+
+- Configure the Global `user.name` and `user.email` for Jenkins
+- Create an SSH key for this user/email and place it under (On Windows) `c:\Windows\System32\config\systemprofile\.ssh\` directory
+- Add a certificate to Jenkins global credentials for this user
+- Configure the job with:
+  - SSH URL and to use the credential
+  - Clean workspace before checkout
+  - `Custom user name/e-mail address` (required to be able to use `git push` directly from the pipeline)
