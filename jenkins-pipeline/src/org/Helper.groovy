@@ -2,13 +2,17 @@ package org
 
 class Helper extends Script {
 
-    def asd() {
-        println("hihi")
+    String instanceMethod() {
+        return 'instance method'
     }
 
     @Override
     Object run() {
         return this
+    }
+
+    static String staticMethod() {
+        return  'static method'
     }
 
 }

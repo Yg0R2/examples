@@ -1,4 +1,5 @@
 #!/usr/bin/env groovy
+import org.Helper
 
 def call(Map inputArgs) {
     def args = [] << inputArgs
@@ -12,7 +13,13 @@ def call(Map inputArgs) {
                     TEST_VALUE = "${args.testValue && args.testValue != 'null' ? args.testValue : 'Word'}"
                 }
                 steps {
-                    echo "Hello ${env.TEST_VALUE}"
+                    script {
+                        echo Helper.staticMethod()
+
+                        echo new Helper().instanceMethod()
+                    }
+
+                    echo "Hello ${TEST_VALUE}"
                 }
             }
         }

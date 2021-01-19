@@ -92,6 +92,7 @@ dependencies {
 
     compileOnly("org.jenkins-ci.main", "jenkins-core", "+")
     compileOnly("org.jenkins-ci.plugins.workflow", "workflow-aggregator", "+")
+    compileOnly("org.jenkins-ci.plugins.workflow", "workflow-cps", ext = "jar")
 
     testImplementation("com.lesfurets", "jenkins-pipeline-unit","+")
 
