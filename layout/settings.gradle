@@ -1,11 +1,4 @@
-pluginManagement {
-    repositories {
-        mavenLocal()
-        mavenCentral()
-        gradlePluginPortal()
-    }
-}
-
 rootProject.name = 'layout'
 
-include 'web'
+include 'layout-web'
+project(':layout-web').projectDir = file('web')
