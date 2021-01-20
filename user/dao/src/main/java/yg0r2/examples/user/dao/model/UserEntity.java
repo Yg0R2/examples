@@ -26,27 +26,24 @@ public class UserEntity {
         return id;
     }
 
-    public UserEntity setId(long id) {
+    public void setId(long id) {
         this.id = id;
-        return this;
     }
 
     public String getPassword() {
         return password;
     }
 
-    public UserEntity setPassword(String password) {
+    public void setPassword(String password) {
         this.password = password;
-        return this;
     }
 
     public String getUserName() {
         return userName;
     }
 
-    public UserEntity setUserName(String userName) {
+    public void setUserName(String userName) {
         this.userName = userName;
-        return this;
     }
 
 }

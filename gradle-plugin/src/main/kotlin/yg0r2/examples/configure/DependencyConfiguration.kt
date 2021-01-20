@@ -3,7 +3,6 @@ package yg0r2.examples.configure
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
 import org.gradle.api.Project
-import org.gradle.api.publish.maven.plugins.MavenPublishPlugin
 import org.gradle.kotlin.dsl.create
 import org.gradle.kotlin.dsl.exclude
 import yg0r2.examples.model.Dependency
@@ -30,12 +29,12 @@ class DependencyConfiguration(private val project: Project) {
         }
 
         clientProject?.let {
-            it.plugins.apply {
-                apply(MavenPublishPlugin::class.java)
-            }
-
             getDependencySet(it, "api").apply {
                 apiProject?.let { _project -> add(it.dependencies.create(_project)) }
+            }
+
+            getDependencySet(it, "compileOnly").apply {
+                add(it.dependencies.create("org.springframework", "spring-web"))
             }
         }
 

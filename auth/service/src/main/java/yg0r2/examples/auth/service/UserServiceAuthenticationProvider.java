@@ -1,6 +1,5 @@
 package yg0r2.examples.auth.service;
 
-import yg0r2.examples.auth.client.UserServiceClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -8,6 +7,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Component;
+import yg0r2.examples.user.client.UserServiceClient;
 
 import java.util.List;
 import java.util.Objects;

@@ -1,26 +1,24 @@
-package yg0r2.examples.auth.client;
+package yg0r2.examples.user.client;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
-@Component
 public class UserServiceClient {
 
-    @Autowired
-    private RestTemplate restTemplate;
+    private final String apiUrl;
+    private final RestTemplate restTemplate;
 
-    @Value("${client.user.endpoint}")
-    private String userServiceUrl;
+    public UserServiceClient(String apiUrl, RestTemplate restTemplate) {
+        this.apiUrl = apiUrl;
+        this.restTemplate = restTemplate;
+    }
 
     public ResponseEntity<Boolean> isExist(String userName, String password) {
-        String url = UriComponentsBuilder.fromHttpUrl(userServiceUrl)
+        String url = UriComponentsBuilder.fromHttpUrl(apiUrl)
             .queryParam("userName", userName)
             .queryParam("password", password)
             .toUriString();

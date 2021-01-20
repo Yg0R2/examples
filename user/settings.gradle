@@ -3,6 +3,12 @@ rootProject.name = 'user'
 include 'user-api'
 project(':user-api').projectDir = file('api')
 
+include 'user-client'
+project(':user-client').projectDir = file('client')
+
+include 'user-client-behemoth'
+project(':user-client-behemoth').projectDir = file('client-behemoth')
+
 include 'user-dao'
 project(':user-dao').projectDir = file('dao')
 

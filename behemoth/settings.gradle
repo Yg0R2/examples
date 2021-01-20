@@ -1,3 +1,7 @@
 rootProject.name = 'behemoth'
 
-include 'web'
+include 'behemoth-service'
+project(':behemoth-service').projectDir = file('service')
+
+include 'behemoth-web'
+project(':behemoth-web').projectDir = file('web')
