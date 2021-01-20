@@ -1,6 +1,6 @@
-package org.examples.maven;
+package yg0r2.examples.maven;
 
-import org.examples.maven.commons.DummyService;
+import yg0r2.examples.maven.commons.DummyService;
 
 public class DummyMain {
 

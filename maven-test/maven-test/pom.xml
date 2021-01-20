@@ -3,7 +3,7 @@
 
     <parent>
         <artifactId>maven-test-parent</artifactId>
-        <groupId>org.example</groupId>
+        <groupId>yg0r2.examples</groupId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
@@ -12,12 +12,12 @@
     <artifactId>maven-test</artifactId>
 
     <properties>
-        <mainClass>org.examples.maven.DummyMain</mainClass>
+        <mainClass>yg0r2.examples.maven.DummyMain</mainClass>
     </properties>
 
     <dependencies>
         <dependency>
-            <groupId>org.example</groupId>
+            <groupId>yg0r2.examples</groupId>
             <artifactId>maven-common</artifactId>
         </dependency>
     </dependencies>

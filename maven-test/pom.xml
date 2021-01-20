@@ -3,7 +3,7 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.example</groupId>
+    <groupId>yg0r2.examples</groupId>
     <artifactId>maven-test-parent</artifactId>
     <packaging>pom</packaging>
     <version>0.0.1-SNAPSHOT</version>
@@ -31,7 +31,7 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>org.example</groupId>
+                <groupId>yg0r2.examples</groupId>
                 <artifactId>maven-common</artifactId>
                 <version>${project.version}</version>
             </dependency>

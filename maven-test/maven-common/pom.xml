@@ -3,7 +3,7 @@
 
     <parent>
         <artifactId>maven-test-parent</artifactId>
-        <groupId>org.example</groupId>
+        <groupId>yg0r2.examples</groupId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 

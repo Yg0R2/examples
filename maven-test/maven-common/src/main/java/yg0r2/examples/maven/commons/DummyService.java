@@ -1,4 +1,4 @@
-package org.examples.maven.commons;
+package yg0r2.examples.maven.commons;
 
 public class DummyService {
 
