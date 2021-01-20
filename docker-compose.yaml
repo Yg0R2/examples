@@ -40,6 +40,21 @@ services:
       - <<: *keystore-volume
         target: /workspace/BOOT-INF/classes/keystore/
 
+  behemoth:
+    container_name: behemoth
+    depends_on:
+      - redis
+    environment:
+      - SERVER_PORT=8080
+      - SERVER_SSL_ENABLED=false
+      - SPRING_REDIS_HOST=redis
+    image: behemoth:0.0.1-SNAPSHOT
+#    ports:
+#      - 8040:8040
+    volumes:
+      - <<: *keystore-volume
+        target: /workspace/BOOT-INF/classes/keystore/
+
   layout:
     container_name: layout
     depends_on:
