@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.client.RestTemplate;
+import yg0r2.examples.user.client.DefaultUserServiceClient;
 import yg0r2.examples.user.client.UserServiceClient;
 
 @Configuration
@@ -20,7 +21,7 @@ public class UserServiceClientConfiguration {
 
     @Bean
     public UserServiceClient userServiceClient() {
-        return new UserServiceClient(apiUrl, restTemplate);
+        return new DefaultUserServiceClient(apiUrl, restTemplate);
     }
 
 }

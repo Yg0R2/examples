@@ -1,12 +1,6 @@
 dependencies {
     api 'yg0r2.examples:auth-web:+'
-    api('yg0r2.examples:backend-web:+') {
-        exclude group: 'yg0r2.examples', module: 'user-client'
-    }
+    api 'yg0r2.examples:backend-web:+'
     api 'yg0r2.examples:layout-web:+'
     api 'yg0r2.examples:user-web:+'
-}
-
-configurations {
-    runtime.exclude group: 'yg0r2.examples', module: 'user-client'
 }

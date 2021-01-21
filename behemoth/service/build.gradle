@@ -1,3 +1,0 @@
-dependencies {
-    api group: 'yg0r2.examples', name: 'user-client-behemoth', version: '+'
-}
