@@ -36,7 +36,7 @@ class DependencyConfiguration(private val project: Project) {
             getDependencySet(it, "compileOnly").apply {
                 add(it.dependencies.create("org.springframework", "spring-web"))
 
-                webProject?.let { _project -> add(it.dependencies.create(_project)) }
+                webProject?.let { _project -> add(it.dependencies.create(_project)) } // exclude service
             }
         }
 
