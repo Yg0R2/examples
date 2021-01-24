@@ -9,7 +9,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 
 @Configuration
 @ConditionalOnProperty(name = "examples.behemoth", havingValue = "false", matchIfMissing = true)
-public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
+public class UserServiceWebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
@@ -21,7 +21,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
             .httpBasic()
                 .disable()
             .formLogin()
-                .loginPage("https://localhost/auth/sign-in")
+                .loginPage("http://localhost/auth/sign-in")
                 .and()
             .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.NEVER)

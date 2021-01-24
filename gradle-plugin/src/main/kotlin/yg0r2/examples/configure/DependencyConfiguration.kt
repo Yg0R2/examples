@@ -10,6 +10,7 @@ import yg0r2.examples.model.Dependency
 class DependencyConfiguration(private val project: Project) {
 
     private val apiProject: Project? = getSubProject(project.subprojects, "api")
+    private val behemothProject: Project? = getSubProject(project.subprojects, "behemoth")
     private val clientProject: Project? = getSubProject(project.subprojects, "client")
     private val daoProject: Project? = getSubProject(project.subprojects, "dao")
     private val serviceProject: Project? = getSubProject(project.subprojects, "service")
@@ -28,15 +29,22 @@ class DependencyConfiguration(private val project: Project) {
             }
         }
 
+        behemothProject?.let {
+            getDependencySet(it, "api").apply {
+                webProject?.let { _project -> add(it.dependencies.create(_project)) }
+            }
+        }
+
         clientProject?.let {
             getDependencySet(it, "api").apply {
                 apiProject?.let { _project -> add(it.dependencies.create(_project)) }
             }
 
             getDependencySet(it, "compileOnly").apply {
+                add(it.dependencies.create("org.springframework", "spring-context"))
                 add(it.dependencies.create("org.springframework", "spring-web"))
 
-                webProject?.let { _project -> add(it.dependencies.create(_project)) } // exclude service
+                add(it.dependencies.create("org.springframework.boot", "spring-boot-autoconfigure"))
             }
         }
 

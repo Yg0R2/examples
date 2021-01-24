@@ -50,7 +50,7 @@ services:
       - SPRING_REDIS_HOST=redis
     image: behemoth:0.0.1-SNAPSHOT
 #    ports:
-#      - 8040:8040
+#      - 8080:8080
     volumes:
       - <<: *keystore-volume
         target: /workspace/BOOT-INF/classes/keystore/
@@ -89,8 +89,8 @@ services:
   redis:
     container_name: redis
     image: redis:alpine
-#    ports:
-#      - 6379:6379
+    ports:
+      - 6379:6379
 
   user:
     container_name: user

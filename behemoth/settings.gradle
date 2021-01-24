@@ -1,4 +1,10 @@
 rootProject.name = 'behemoth'
 
+include 'behemoth-dao'
+project(':behemoth-dao').projectDir = file('dao')
+
+include 'behemoth-service'
+project(':behemoth-service').projectDir = file('service')
+
 include 'behemoth-web'
 project(':behemoth-web').projectDir = file('web')

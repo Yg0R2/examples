@@ -1,5 +1,13 @@
 examples.behemoth: true
 
+client.user.endpoint: https://localhost/user/api/user/exists
+
+server.ssl:
+  enabled: true
+  key-store: classpath:keystore/localhost.p12
+  key-store-password:
+  key-store-type: PKCS12
+
 spring:
   datasource:
     driverClassName: org.h2.Driver
@@ -7,8 +15,8 @@ spring:
     username: test
     password: test
   jpa.hibernate.ddl-auto: create-drop
-#  redis:
-#    host: localhost
-#    port: 6379
-#  session:
-#    store-type: redis
+  redis:
+    host: localhost
+    port: 6379
+  session:
+    store-type: redis

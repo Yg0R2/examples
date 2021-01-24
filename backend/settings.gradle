@@ -3,6 +3,9 @@ rootProject.name = 'backend'
 include 'backend-api'
 project(':backend-api').projectDir = file('api')
 
+include 'backend-behemoth'
+project(':backend-behemoth').projectDir = file('behemoth')
+
 include 'backend-service'
 project(':backend-service').projectDir = file('service')
 

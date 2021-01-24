@@ -3,6 +3,9 @@ rootProject.name = 'user'
 include 'user-api'
 project(':user-api').projectDir = file('api')
 
+include 'user-behemoth'
+project(':user-behemoth').projectDir = file('behemoth')
+
 include 'user-client'
 project(':user-client').projectDir = file('client')
 

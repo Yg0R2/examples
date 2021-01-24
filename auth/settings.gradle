@@ -3,6 +3,9 @@ rootProject.name = 'auth'
 include 'auth-api'
 project(':auth-api').projectDir = file('api')
 
+include 'auth-behemoth'
+project(':auth-behemoth').projectDir = file('behemoth')
+
 include 'auth-service'
 project(':auth-service').projectDir = file('service')
 

@@ -12,8 +12,8 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
 @Configuration
-@ConditionalOnProperty(name = "examples.behemoth", havingValue = "false", matchIfMissing = true)
-public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
+//@ConditionalOnProperty(name = "examples.behemoth", havingValue = "false", matchIfMissing = true)
+public class AuthServiceWebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private UserServiceAuthenticationProvider userServiceAuthenticationProvider;

@@ -1,4 +1,7 @@
 rootProject.name = 'layout'
 
+include 'layout-behemoth'
+project(':layout-behemoth').projectDir = file('behemoth')
+
 include 'layout-web'
 project(':layout-web').projectDir = file('web')
