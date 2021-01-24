@@ -1,4 +1,4 @@
-package yg0r2.examples.jpa.one_to_one;
+package yg0r2.examples.jpa;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -8,11 +8,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.springframework.boot.test.context.SpringBootTest;
-
-import yg0r2.examples.jpa.Child;
-import yg0r2.examples.jpa.ChildRepository;
-import yg0r2.examples.jpa.Parent;
-import yg0r2.examples.jpa.ParentRepository;
 
 @SpringBootTest
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)

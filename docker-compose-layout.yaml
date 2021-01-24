@@ -8,7 +8,7 @@ services:
       service: common-ssl-microservice
     external_links:
       - redis
-    image: layout:0.0.1-SNAPSHOT
+    image: layout:${VERSION:-0.0.1-SNAPSHOT}
     ports:
       - 8000:8000
 

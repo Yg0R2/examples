@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  backend:
+    container_name: backend
+    extends:
+      file: _common.yaml
+      service: common-ssl-microservice
+    external_links:
+      - redis
+    image: backend:0.0.1-SNAPSHOT
+    ports:
+      - 8030:8030
