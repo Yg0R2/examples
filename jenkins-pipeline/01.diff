@@ -1,0 +1,128 @@
+diff --git a/jenkins-pipeline/build.gradle.kts b/jenkins-pipeline/build.gradle.kts
+index af3c747..91b3b40 100644
+--- a/jenkins-pipeline/build.gradle.kts
++++ b/jenkins-pipeline/build.gradle.kts
+@@ -89,12 +89,11 @@ tasks {
+ 
+ dependencies {
+     implementation("org.codehaus.groovy", "groovy-all", "+")
+-
+-    compileOnly("org.jenkins-ci.main", "jenkins-core", "+")
+-    compileOnly("org.jenkins-ci.plugins.workflow", "workflow-aggregator", "+")
+-    compileOnly("org.jenkins-ci.plugins.workflow", "workflow-cps", ext = "jar")
++    implementation("org.jenkins-ci.main", "jenkins-core", "+")
++    implementation("org.jenkins-ci.plugins.workflow", "workflow-aggregator", "+")
+ 
+     testImplementation("com.lesfurets", "jenkins-pipeline-unit","+")
+-
++    testImplementation("org.assertj", "assertj-core", "+")
+     testImplementation("org.junit.jupiter", "junit-jupiter", "+")
++    testImplementation("org.mockito", "mockito-core", "+")
+ }
+diff --git a/jenkins-pipeline/src/org/Helper.groovy b/jenkins-pipeline/src/org/Helper.groovy
+deleted file mode 100644
+index 15cd276..0000000
+--- a/jenkins-pipeline/src/org/Helper.groovy
++++ /dev/null
+@@ -1,18 +0,0 @@
+-package org
+-
+-class Helper extends Script {
+-
+-    String instanceMethod() {
+-        return 'instance method'
+-    }
+-
+-    @Override
+-    Object run() {
+-        return this
+-    }
+-
+-    static String staticMethod() {
+-        return  'static method'
+-    }
+-
+-}
+diff --git a/jenkins-pipeline/test/examplePipelineTest.groovy b/jenkins-pipeline/test/examplePipelineTest.groovy
+index e7d0a91..6ff80e8 100644
+--- a/jenkins-pipeline/test/examplePipelineTest.groovy
++++ b/jenkins-pipeline/test/examplePipelineTest.groovy
+@@ -8,9 +8,15 @@ class examplePipelineTest extends DeclarativePipelineTest {
+ 
+     @BeforeEach
+     void setUp() {
++        scriptRoots = ['src', 'vars']
++
+         super.setUp()
+ 
+-        underTest = loadScript("vars/examplePipeline.groovy")
++        helper.registerAllowedMethod('dummyStep', [String.class], {
++            param -> loadScript('dummyStep.groovy').call(param)
++        })
++
++        underTest = loadScript("examplePipeline.groovy")
+     }
+ 
+     @Test
+diff --git a/jenkins-pipeline/test/org/HelperTest.groovy b/jenkins-pipeline/test/org/HelperTest.groovy
+deleted file mode 100644
+index 5396e4c..0000000
+--- a/jenkins-pipeline/test/org/HelperTest.groovy
++++ /dev/null
+@@ -1,26 +0,0 @@
+-package org
+-
+-
+-import org.junit.jupiter.api.BeforeEach
+-import org.junit.jupiter.api.Test
+-
+-class HelperTest {
+-
+-    private Helper underTest
+-
+-    @BeforeEach
+-    void setUp() {
+-        underTest = new Helper()
+-    }
+-
+-    @Test
+-    void test_instanceMethod() {
+-        underTest.instanceMethod()
+-    }
+-
+-    @Test
+-    void test_staticMethod() {
+-        Helper.staticMethod()
+-    }
+-
+-}
+diff --git a/jenkins-pipeline/vars/examplePipeline.groovy b/jenkins-pipeline/vars/examplePipeline.groovy
+index d49f168..9a6088d 100644
+--- a/jenkins-pipeline/vars/examplePipeline.groovy
++++ b/jenkins-pipeline/vars/examplePipeline.groovy
+@@ -1,5 +1,4 @@
+ #!/usr/bin/env groovy
+-import org.Helper
+ 
+ def call(Map inputArgs) {
+     def args = [] << inputArgs
+@@ -10,16 +9,12 @@ def call(Map inputArgs) {
+         stages {
+             stage('Hello') {
+                 environment {
+-                    TEST_VALUE = "${args.testValue && args.testValue != 'null' ? args.testValue : 'Word'}"
++                    TEST_VALUE = "${args.testValue && args.testValue != 'null' ? args.testValue : 'World'}"
+                 }
+                 steps {
+-                    script {
+-                        echo Helper.staticMethod()
+-
+-                        echo new Helper().instanceMethod()
+-                    }
+-
+                     echo "Hello ${TEST_VALUE}"
++
++                    dummyStep('World')
+                 }
+             }
+         }

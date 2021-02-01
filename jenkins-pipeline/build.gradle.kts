@@ -89,12 +89,11 @@ tasks {
 
 dependencies {
     implementation("org.codehaus.groovy", "groovy-all", "+")
-
-    compileOnly("org.jenkins-ci.main", "jenkins-core", "+")
-    compileOnly("org.jenkins-ci.plugins.workflow", "workflow-aggregator", "+")
-    compileOnly("org.jenkins-ci.plugins.workflow", "workflow-cps", ext = "jar")
+    implementation("org.jenkins-ci.main", "jenkins-core", "+")
+    implementation("org.jenkins-ci.plugins.workflow", "workflow-aggregator", "+")
 
     testImplementation("com.lesfurets", "jenkins-pipeline-unit","+")
-
+    testImplementation("org.assertj", "assertj-core", "+")
     testImplementation("org.junit.jupiter", "junit-jupiter", "+")
+    testImplementation("org.mockito", "mockito-core", "+")
 }

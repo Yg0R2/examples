@@ -8,9 +8,15 @@ class examplePipelineTest extends DeclarativePipelineTest {
 
     @BeforeEach
     void setUp() {
+        scriptRoots = ['src', 'vars']
+
         super.setUp()
 
-        underTest = loadScript("vars/examplePipeline.groovy")
+        helper.registerAllowedMethod('dummyStep', [String.class], {
+            param -> loadScript('dummyStep.groovy').call(param)
+        })
+
+        underTest = loadScript("examplePipeline.groovy")
     }
 
     @Test
