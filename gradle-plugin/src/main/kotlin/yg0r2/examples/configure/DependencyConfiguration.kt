@@ -11,6 +11,7 @@ class DependencyConfiguration(private val project: Project) {
     private val clientProject: Project? = getSubProject(project.subprojects, "client")
     private val daoProject: Project? = getSubProject(project.subprojects, "dao")
     private val serviceProject: Project? = getSubProject(project.subprojects, "service")
+    private val uiProject: Project? = getSubProject(project.subprojects, "ui")
     private val webProject: Project? = getSubProject(project.subprojects, "web")
 
     fun apply() {
@@ -65,7 +66,6 @@ class DependencyConfiguration(private val project: Project) {
 
                 add(it.dependencies.create("org.springframework.boot", "spring-boot-starter-data-redis"))
                 add(it.dependencies.create("org.springframework.boot", "spring-boot-starter-security"))
-                add(it.dependencies.create("org.springframework.boot", "spring-boot-starter-thymeleaf"))
                 add(it.dependencies.create("org.springframework.boot", "spring-boot-starter-web"))
             }
         }
