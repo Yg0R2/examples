@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
+    <!-- If parent has <packaging>pom</packaging> and this module is defined in <modules> as a module, this can be removed -->
     <parent>
         <artifactId>maven-test-parent</artifactId>
         <groupId>yg0r2.examples</groupId>
@@ -9,7 +10,7 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>maven-test</artifactId>
+    <artifactId>maven-test-application</artifactId>
 
     <properties>
         <mainClass>yg0r2.examples.maven.DummyMain</mainClass>
@@ -18,7 +19,7 @@
     <dependencies>
         <dependency>
             <groupId>yg0r2.examples</groupId>
-            <artifactId>maven-common</artifactId>
+            <artifactId>maven-test-common</artifactId>
         </dependency>
     </dependencies>
 

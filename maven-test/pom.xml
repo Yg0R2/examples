@@ -9,8 +9,8 @@
     <version>0.0.1-SNAPSHOT</version>
 
     <modules>
-        <module>maven-test</module>
-        <module>maven-common</module>
+        <module>application</module>
+        <module>common</module>
     </modules>
 
     <properties>
@@ -32,7 +32,7 @@
         <dependencies>
             <dependency>
                 <groupId>yg0r2.examples</groupId>
-                <artifactId>maven-common</artifactId>
+                <artifactId>maven-test-common</artifactId>
                 <version>${project.version}</version>
             </dependency>
         </dependencies>
