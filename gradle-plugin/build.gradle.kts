@@ -18,6 +18,25 @@ repositories {
 publishing {
     repositories {
         mavenLocal()
+        if (isRelease()) {
+            maven {
+                name = "github"
+                url = uri("https://maven.pkg.github.com/Yg0R2/examples/${project.rootProject.name}")
+                credentials(PasswordCredentials::class)
+            }
+        }
+    }
+
+    if (isRelease()) {
+        publications {
+            create<MavenPublication>("github") {
+                groupId = project.group.toString()
+                artifactId = project.name
+                version = project.version.toString()
+
+                from(project.components.getByName("kotlin"))
+            }
+        }
     }
 }
 
@@ -55,3 +74,5 @@ tasks {
         useJUnitPlatform()
     }
 }
+
+fun isRelease(): Boolean = !version.toString().endsWith("SNAPSHOT")
