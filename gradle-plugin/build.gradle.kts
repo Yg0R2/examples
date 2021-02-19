@@ -1,6 +1,4 @@
 plugins {
-    id("org.jetbrains.kotlin.jvm") version "1.4.30"
-    id("org.jetbrains.kotlin.plugin.serialization") version "1.4.30"
     jacoco
     `java-gradle-plugin`
     `kotlin-dsl`
@@ -55,11 +53,8 @@ publishing {
 }
 
 dependencies {
-    api("org.springframework.boot", "spring-boot-gradle-plugin", "2.4.1")
-    api("io.spring.gradle", "dependency-management-plugin", "1.0.10.RELEASE")
-
-    implementation(kotlin("stdlib", org.jetbrains.kotlin.config.KotlinCompilerVersion.VERSION)) // or "stdlib-jdk8"
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.0.1") // JVM dependency
+    implementation("org.springframework.boot", "spring-boot-gradle-plugin", "2.4.1")
+    implementation("io.spring.gradle", "dependency-management-plugin", "1.0.10.RELEASE")
 
     testImplementation("org.junit.jupiter", "junit-jupiter-engine", "5.6.2")
 }

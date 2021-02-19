@@ -1,12 +1,9 @@
 package yg0r2.examples.configure
 
-import kotlinx.serialization.decodeFromString
-import kotlinx.serialization.json.Json
 import org.gradle.api.Project
 import org.gradle.api.publish.maven.plugins.MavenPublishPlugin
 import org.gradle.kotlin.dsl.create
 import org.gradle.kotlin.dsl.exclude
-import yg0r2.examples.model.Dependency
 
 class DependencyConfiguration(private val project: Project) {
 
@@ -86,11 +83,8 @@ class DependencyConfiguration(private val project: Project) {
         }
 
         // Excluding dependency https://docs.gradle.org/current/userguide/resolution_rules.html
-        val excludedDependencies = readJsonResource<List<Dependency>>("excludedDependencies.json")
         project.configurations.all {
-            excludedDependencies.forEach {
-                exclude(it.group, it.module)
-            }
+            exclude("org.junit.vintage", "junit-vintage-engine")
         }
 
         // Gradle automatically use `junit-jupiter` from any (transitive) dependencies instead of `junit`
@@ -105,12 +99,6 @@ class DependencyConfiguration(private val project: Project) {
 
     private fun getSubProject(subProjects: Set<Project>, name: String): Project? {
         return subProjects.firstOrNull { it.name.endsWith(name) }
-    }
-
-    private inline fun <reified T> readJsonResource(resourcePath: String): T {
-        val url = javaClass.classLoader.getResource(resourcePath) ?: throw IllegalArgumentException("Resource does not exist: $resourcePath")
-
-        return Json.decodeFromString(url.readText())
     }
 
 }
