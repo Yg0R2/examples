@@ -33,8 +33,7 @@ class MyPlugin : Plugin<Project> {
 
             it.plugins.apply {
                 apply(DependencyManagementPlugin::class.java)
-//                apply(JavaPlugin::class.java)
-                apply(JavaLibraryPlugin::class.java) // Adds api config
+                apply(JavaLibraryPlugin::class.java)
                 apply(SpringBootPlugin::class.java)
             }
 
@@ -75,7 +74,7 @@ class MyPlugin : Plugin<Project> {
 
         val fileDataExtension = project.extensions.create("fileData", FileDataExtension::class.java, project)
         project.tasks.register("generate", GenerateTask::class.java) {
-            group = "examples"
+            group = GradlePluginConstants.TASK_GROUP
 
             content.set(fileDataExtension.content)
             fileCount.set(fileDataExtension.fileCount)

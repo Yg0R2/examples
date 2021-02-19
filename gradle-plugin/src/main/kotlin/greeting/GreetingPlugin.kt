@@ -10,7 +10,7 @@ class GreetingPlugin : Plugin<Project> {
         val extension = project.extensions.create("greeting", GreetingPluginExtension::class.java)
 
         project.task("hello") {
-            group = "examples"
+            group = GradlePluginConstants.TASK_GROUP
 
             doLast {
                 println("${extension.message} from ${extension.greeter}")
@@ -18,7 +18,7 @@ class GreetingPlugin : Plugin<Project> {
         }
 
         project.tasks.register("greet", GreetingToFileTask::class.java) {
-            group = "examples"
+            group = GradlePluginConstants.TASK_GROUP
 
             destinationFile = {
                 project.extra["greetingFile"]!!
@@ -26,6 +26,8 @@ class GreetingPlugin : Plugin<Project> {
         }
 
         project.tasks.register("sayGreeting") {
+            group = GradlePluginConstants.TASK_GROUP
+
             dependsOn("greet")
             doLast {
                 println(project.file(project.extra["greetingFile"]!!).readText())
