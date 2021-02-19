@@ -10,12 +10,16 @@ class GreetingPlugin : Plugin<Project> {
         val extension = project.extensions.create("greeting", GreetingPluginExtension::class.java)
 
         project.task("hello") {
+            group = "examples"
+
             doLast {
                 println("${extension.message} from ${extension.greeter}")
             }
         }
 
         project.tasks.register("greet", GreetingToFileTask::class.java) {
+            group = "examples"
+
             destinationFile = {
                 project.extra["greetingFile"]!!
             }

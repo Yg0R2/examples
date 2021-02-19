@@ -33,8 +33,8 @@ class MyPlugin : Plugin<Project> {
 
             it.plugins.apply {
                 apply(DependencyManagementPlugin::class.java)
-                apply(JavaPlugin::class.java)
-                apply(JavaLibraryPlugin::class.java)
+//                apply(JavaPlugin::class.java)
+                apply(JavaLibraryPlugin::class.java) // Adds api config
                 apply(SpringBootPlugin::class.java)
             }
 
@@ -64,7 +64,6 @@ class MyPlugin : Plugin<Project> {
             }
         }
 
-
         // Execute in case of JavaPlugin present
         val javaPluginAction = Action<JavaPlugin> {
             println("Jee JavaPlugin found :)")
@@ -76,14 +75,11 @@ class MyPlugin : Plugin<Project> {
 
         val fileDataExtension = project.extensions.create("fileData", FileDataExtension::class.java, project)
         project.tasks.register("generate", GenerateTask::class.java) {
+            group = "examples"
+
             content.set(fileDataExtension.content)
             fileCount.set(fileDataExtension.fileCount)
         }
-
-        project.repositories.addAll(listOf(
-            project.repositories.mavenLocal(),
-            project.repositories.mavenCentral()
-        ))
 
         project.tasks.named("test", Test::class.java) {
             useJUnitPlatform()

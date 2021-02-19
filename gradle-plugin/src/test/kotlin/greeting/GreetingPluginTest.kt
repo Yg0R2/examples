@@ -13,7 +13,7 @@ internal class GreetingPluginTest {
             .build();
 
         // WHEN
-        project.pluginManager.apply("yg0r2.examples.greeting")
+        project.pluginManager.apply("greeting")
 
         // THEN
         assertTrue(project.tasks.getByName("greet") is GreetingToFileTask)

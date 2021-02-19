@@ -1,9 +1,6 @@
-version = "0.0.1-SNAPSHOT"
-group = "yg0r2.examples"
-
 plugins {
-    kotlin("jvm") version "1.4.21"
-    kotlin("plugin.serialization") version "1.4.21"
+    id("org.jetbrains.kotlin.jvm") version "1.4.30"
+    id("org.jetbrains.kotlin.plugin.serialization") version "1.4.30"
     jacoco
     `java-gradle-plugin`
     `kotlin-dsl`
@@ -11,23 +8,40 @@ plugins {
 }
 
 repositories {
-    mavenLocal()
     mavenCentral()
+}
+
+group = "yg0r2.examples"
+version = "0.0.1-SNAPSHOT"
+
+gradlePlugin {
+    plugins {
+        create("greetingPlugin") {
+            id = "greeting"
+            implementationClass = "greeting.GreetingPlugin"
+        }
+
+        create("myDependencies") {
+            id = "dependency"
+            implementationClass = "yg0r2.examples.MyPlugin"
+        }
+    }
 }
 
 publishing {
     repositories {
         mavenLocal()
-        if (isRelease()) {
+    }
+
+    if (!version.toString().endsWith("SNAPSHOT")) {
+        repositories {
             maven {
                 name = "github"
                 url = uri("https://maven.pkg.github.com/Yg0R2/examples/${project.rootProject.name}")
                 credentials(PasswordCredentials::class)
             }
         }
-    }
 
-    if (isRelease()) {
         publications {
             create<MavenPublication>("github") {
                 groupId = project.group.toString()
@@ -36,19 +50,6 @@ publishing {
 
                 from(project.components.getByName("kotlin"))
             }
-        }
-    }
-}
-
-gradlePlugin {
-    plugins {
-        create("greetingPlugin") {
-            id = "yg0r2.examples.greeting"
-            implementationClass = "greeting.GreetingPlugin"
-        }
-        create("myDependencies") {
-            id = "yg0r2.examples.dependency"
-            implementationClass = "yg0r2.examples.MyPlugin"
         }
     }
 }
@@ -74,5 +75,3 @@ tasks {
         useJUnitPlatform()
     }
 }
-
-fun isRelease(): Boolean = !version.toString().endsWith("SNAPSHOT")

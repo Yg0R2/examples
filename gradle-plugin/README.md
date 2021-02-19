@@ -13,7 +13,7 @@ pluginManagement {
 - Import the plugin
 ```groovy
 plugins {
-    id 'yg0r2.examples.greeting' version '0.0.1-SNAPSHOT'
+    id 'greeting' version '0.0.1-SNAPSHOT'
 }
 ```
 
