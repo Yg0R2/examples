@@ -16,11 +16,9 @@ import org.springframework.boot.gradle.tasks.bundling.BootBuildImage
 import org.springframework.boot.gradle.tasks.bundling.BootJar
 import yg0r2.examples.configure.DependencyConfiguration
 import yg0r2.examples.configure.MavenPublishConfiguration
-import yg0r2.examples.generate.FileDataExtension
-import yg0r2.examples.generate.GenerateTask
 import java.util.*
 
-class MyPlugin : Plugin<Project> {
+class DependencyPlugin : Plugin<Project> {
 
     override fun apply(project: Project) {
         // Depending on other plugin
@@ -71,14 +69,6 @@ class MyPlugin : Plugin<Project> {
 
         // Add project dependencies
         DependencyConfiguration(project).apply()
-
-        val fileDataExtension = project.extensions.create("fileData", FileDataExtension::class.java, project)
-        project.tasks.register("generate", GenerateTask::class.java) {
-            group = GradlePluginConstants.TASK_GROUP
-
-            content.set(fileDataExtension.content)
-            fileCount.set(fileDataExtension.fileCount)
-        }
 
         project.tasks.named("test", Test::class.java) {
             useJUnitPlatform()

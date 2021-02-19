@@ -14,14 +14,19 @@ version = "0.0.1-SNAPSHOT"
 
 gradlePlugin {
     plugins {
+        create("generatePlugin") {
+            id = "generate"
+            implementationClass = "generate.GenerateFilesPlugin"
+        }
+
         create("greetingPlugin") {
             id = "greeting"
             implementationClass = "greeting.GreetingPlugin"
         }
 
-        create("myDependencies") {
+        create("dependencyPlugin") {
             id = "dependency"
-            implementationClass = "yg0r2.examples.MyPlugin"
+            implementationClass = "yg0r2.examples.DependencyPlugin"
         }
     }
 }
