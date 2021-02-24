@@ -7,6 +7,7 @@ plugins {
 
 repositories {
     mavenCentral()
+    gradlePluginPortal()
 }
 
 group = "yg0r2.examples"
@@ -27,6 +28,11 @@ gradlePlugin {
         create("dependencyPlugin") {
             id = "dependency"
             implementationClass = "yg0r2.examples.DependencyPlugin"
+        }
+
+        create("examplesPlugin") {
+            id = "examples-gradle-plugin"
+            implementationClass = "yg0r2.examples.ExamplesPlugin"
         }
     }
 }
@@ -58,10 +64,11 @@ publishing {
 }
 
 dependencies {
-    implementation("org.springframework.boot", "spring-boot-gradle-plugin", "2.4.1")
-    implementation("io.spring.gradle", "dependency-management-plugin", "1.0.10.RELEASE")
+    implementation("com.github.node-gradle", "gradle-node-plugin", "+")
+    implementation("org.springframework.boot", "spring-boot-gradle-plugin", "+")
+    implementation("io.spring.gradle", "dependency-management-plugin", "+")
 
-    testImplementation("org.junit.jupiter", "junit-jupiter-engine", "5.6.2")
+    testImplementation("org.junit.jupiter", "junit-jupiter-engine", "+")
 }
 
 tasks {
