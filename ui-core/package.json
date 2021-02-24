@@ -1,10 +1,13 @@
 {
-  "name": "@examples/ui-core",
+  "name": "@yg0r2/ui-core",
   "version": "1.0.0",
   "description": "Examples UI Core Library",
   "author": "Yg0R2",
   "license": "MIT",
-  "repository": "Yg0R2/exemples",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/Yg0R2"
+  },
+  "repository": "https://github.com/Yg0R2/examples.git",
   "main": "dist/index.js",
   "module": "dist/index.modern.js",
   "source": "src/index.js",
@@ -22,6 +25,11 @@
     "test:watch": "react-scripts test --env=jsdom",
     "predeploy": "cd example && npm install && npm run build",
     "deploy": "gh-pages -d example/build"
+  },
+  "dependencies": {
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-scripts": "^3.4.1"
   },
   "peerDependencies": {
     "react": "^16.0.0"
@@ -43,10 +51,7 @@
     "gh-pages": "^2.2.0",
     "microbundle-crl": "^0.13.10",
     "npm-run-all": "^4.1.5",
-    "prettier": "^2.0.4",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-scripts": "^3.4.1"
+    "prettier": "^2.0.4"
   },
   "files": [
     "dist"

@@ -1,8 +1,8 @@
 import React from 'react'
 
-import Core from '@examples/ui-core'
+import Core from '@yg0r2/ui-core'
 
-import '@examples/ui-core/dist/index.css'
+import '@yg0r2/ui-core/dist/index.css'
 
 class App extends React.Component {
   render() {

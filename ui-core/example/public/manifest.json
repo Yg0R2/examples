@@ -1,6 +1,6 @@
 {
-  "short_name": "@examples/ui-core",
-  "name": "@examples/ui-core",
+  "short_name": "@yg0r2/ui-core",
+  "name": "@yg0r2/ui-core",
   "icons": [
     {
       "src": "favicon.ico",

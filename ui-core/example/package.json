@@ -1,5 +1,5 @@
 {
-  "name": "@examples/ui-core-example",
+  "name": "@yg0r2/ui-core-example",
   "homepage": ".",
   "version": "0.0.0",
   "private": true,
@@ -10,10 +10,7 @@
     "eject": "node ../node_modules/react-scripts/bin/react-scripts.js eject"
   },
   "dependencies": {
-    "react": "file:../node_modules/react",
-    "react-dom": "file:../node_modules/react-dom",
-    "react-scripts": "file:../node_modules/react-scripts",
-    "@examples/ui-core": "file:.."
+    "@yg0r2/ui-core": "file:.."
   },
   "devDependencies": {
     "@babel/plugin-syntax-object-rest-spread": "^7.8.3"
