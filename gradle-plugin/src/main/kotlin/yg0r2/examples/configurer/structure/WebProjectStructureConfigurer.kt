@@ -1,4 +1,4 @@
-package yg0r2.examples.configurers.structure
+package yg0r2.examples.configurer.structure
 
 import org.gradle.api.Project
 import yg0r2.examples.extensions.addToConfiguration
