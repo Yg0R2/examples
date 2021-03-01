@@ -2,17 +2,15 @@ package yg0r2.examples
 
 import org.gradle.api.Plugin
 import org.gradle.api.Project
-import yg0r2.examples.configurers.dependency.ApiProjectDependencyConfigurer
-import yg0r2.examples.configurers.type.GradleProjectConfigurer
-import yg0r2.examples.configurers.dependency.RootProjectProjectDependencyConfigurer
-import yg0r2.examples.configurers.dependency.WebProjectDependencyConfigurer
-import yg0r2.examples.configurers.plugin.MavenPublishPluginConfigurer
-import yg0r2.examples.configurers.structure.RootProjectStructureConfigurer
-import yg0r2.examples.configurers.structure.WebProjectStructureConfigurer
-import yg0r2.examples.extensions.withDependencyConfigurer
-import yg0r2.examples.extensions.withPluginConfigurers
-import yg0r2.examples.extensions.withProjectTypeConfigurer
-import yg0r2.examples.extensions.withStructureConfigurer
+import yg0r2.examples.configurer.dependency.ApiProjectDependencyConfigurer
+import yg0r2.examples.configurer.dependency.RootProjectProjectDependencyConfigurer
+import yg0r2.examples.configurer.dependency.WebProjectDependencyConfigurer
+import yg0r2.examples.configurer.plugin.MavenPublishPluginConfigurer
+import yg0r2.examples.configurer.structure.RootProjectStructureConfigurer
+import yg0r2.examples.configurer.structure.WebProjectStructureConfigurer
+import yg0r2.examples.configurer.type.GradleProjectConfigurer
+import yg0r2.examples.configurer.type.NpmProjectTypeConfigurer
+import yg0r2.examples.extensions.*
 import yg0r2.examples.model.Projects
 
 class ExamplesPlugin: Plugin<Project> {
@@ -21,6 +19,7 @@ class ExamplesPlugin: Plugin<Project> {
         val projects = Projects(project)
 
         projects.rootProject
+            .isRequired()
             .withProjectTypeConfigurer(GradleProjectConfigurer)
             .withStructureConfigurer(RootProjectStructureConfigurer, projects)
             .withDependencyConfigurer(RootProjectProjectDependencyConfigurer)
@@ -29,6 +28,9 @@ class ExamplesPlugin: Plugin<Project> {
             .withProjectTypeConfigurer(GradleProjectConfigurer)
             .withPluginConfigurers(MavenPublishPluginConfigurer)
             .withDependencyConfigurer(ApiProjectDependencyConfigurer)
+
+        projects.uiProject
+            .withProjectTypeConfigurer(NpmProjectTypeConfigurer)
 
         projects.webProject
             .withProjectTypeConfigurer(GradleProjectConfigurer)

@@ -1,4 +1,4 @@
-package yg0r2.examples.configurers.type
+package yg0r2.examples.configurer.type
 
 import org.gradle.api.Project
 

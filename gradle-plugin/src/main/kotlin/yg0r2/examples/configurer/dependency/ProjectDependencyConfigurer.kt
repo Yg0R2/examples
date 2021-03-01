@@ -1,4 +1,4 @@
-package yg0r2.examples.configurers.dependency
+package yg0r2.examples.configurer.dependency
 
 import org.gradle.api.Project
 

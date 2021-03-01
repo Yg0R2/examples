@@ -1,4 +1,4 @@
-package yg0r2.examples.configurers.plugin
+package yg0r2.examples.configurer.plugin
 
 import org.gradle.api.Project
 import org.gradle.api.artifacts.repositories.PasswordCredentials
