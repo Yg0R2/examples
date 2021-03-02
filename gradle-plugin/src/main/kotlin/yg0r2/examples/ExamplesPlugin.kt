@@ -6,6 +6,7 @@ import yg0r2.examples.configurer.dependency.ApiProjectDependencyConfigurer
 import yg0r2.examples.configurer.dependency.RootProjectProjectDependencyConfigurer
 import yg0r2.examples.configurer.dependency.WebProjectDependencyConfigurer
 import yg0r2.examples.configurer.plugin.MavenPublishPluginConfigurer
+import yg0r2.examples.configurer.structure.ClientProjectStructureConfigurer
 import yg0r2.examples.configurer.structure.RootProjectStructureConfigurer
 import yg0r2.examples.configurer.structure.WebProjectStructureConfigurer
 import yg0r2.examples.configurer.type.GradleProjectConfigurer
@@ -28,6 +29,11 @@ class ExamplesPlugin: Plugin<Project> {
             .withProjectTypeConfigurer(GradleProjectConfigurer)
             .withPluginConfigurers(MavenPublishPluginConfigurer)
             .withDependencyConfigurer(ApiProjectDependencyConfigurer)
+
+        projects.clientProject
+            .withProjectTypeConfigurer(GradleProjectConfigurer)
+            .withPluginConfigurers(MavenPublishPluginConfigurer)
+            .withStructureConfigurer(ClientProjectStructureConfigurer, projects)
 
         projects.uiProject
             .withProjectTypeConfigurer(NpmProjectTypeConfigurer)

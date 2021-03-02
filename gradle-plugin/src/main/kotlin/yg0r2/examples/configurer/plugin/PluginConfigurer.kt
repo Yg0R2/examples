@@ -1,9 +1,5 @@
 package yg0r2.examples.configurer.plugin
 
-import org.gradle.api.Project
+import yg0r2.examples.configurer.Configurer
 
-interface PluginConfigurer {
-
-    fun configure(project: Project)
-
-}
+interface PluginConfigurer: Configurer
