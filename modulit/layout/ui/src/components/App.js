@@ -1,10 +1,13 @@
+import Core from '@yg0r2/ui-core'
+
 import React from 'react'
 
 export default class App extends React.Component {
   render() {
     return (
       <div>
-        Hello <span>{this.props.userName}</span>!
+        <Core.ExampleComponent text={this.props.userName} />
+
         <ul>
           <li>
             <a href='/'>Home</a>
