@@ -14,4 +14,5 @@ buildscript {
     }
 }
 
-apply(plugin = "dependency")
+//apply(plugin = "dependency")
+apply(plugin = "examples-gradle-plugin")
