@@ -12,12 +12,6 @@
   "dependencies": {
     "@yg0r2/ui-core": "file:.."
   },
-  "devDependencies": {
-    "@babel/plugin-syntax-object-rest-spread": "^7.8.3"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
   "browserslist": [
     ">0.2%",
     "not dead",
