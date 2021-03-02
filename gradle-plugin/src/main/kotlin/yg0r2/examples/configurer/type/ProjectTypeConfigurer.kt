@@ -1,9 +1,5 @@
 package yg0r2.examples.configurer.type
 
-import org.gradle.api.Project
+import yg0r2.examples.configurer.Configurer
 
-interface ProjectTypeConfigurer {
-
-    fun configure(project: Project)
-
-}
+interface ProjectTypeConfigurer: Configurer
