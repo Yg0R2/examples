@@ -1,0 +1,2 @@
+_extends: .github
+tag-template: yg0r2.examples-$NEXT_MINOR_VERSION
