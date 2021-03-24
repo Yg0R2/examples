@@ -20,12 +20,15 @@ public class DummyDataPopulatorCommandLineRunner implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
-        CreateUserRequest createUserRequest = new CreateUserRequest.Builder()
-            .withPassword(passwordEncoder.encode(PASSWORD))
-            .withUserName(USER_NAME)
-            .build();
+        if (userService.findUserByName(USER_NAME).isEmpty()) {
+            CreateUserRequest createUserRequest = new CreateUserRequest.Builder()
+                .withPassword(passwordEncoder.encode(PASSWORD))
+                .withUserName(USER_NAME)
+                .build();
 
-        userService.createUser(createUserRequest);
+            userService.createUser(createUserRequest);
+        }
+
     }
 
 }
