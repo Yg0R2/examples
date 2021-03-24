@@ -18,6 +18,3 @@ spring:
     port: 6379
   session:
     store-type: redis
-
-trust.store: ${server.ssl.key-store}
-trust.store.password: ${server.ssl.key-store-password}
