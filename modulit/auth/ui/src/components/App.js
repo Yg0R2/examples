@@ -4,7 +4,7 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <form method="POST" action="/auth/api/login">
+      <form method="POST" action="/api/login">
         <h2>Log in</h2>
 
         <div>

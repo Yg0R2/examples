@@ -1,8 +1,16 @@
 import Core from '@yg0r2/ui-core'
 
+import axios from 'axios'
 import React from 'react'
 
 export default class App extends React.Component {
+
+  componentDidMount() {
+    axios.get('/auth/')
+      .then(response => console.log("Response: ", response.data))
+      .catch(error => console.log("Error: ", error))
+  }
+
   render() {
     return (
       <div>
