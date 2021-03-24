@@ -1,0 +1,33 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Build UI and Run LayoutApplication" type="Application" factoryName="Application">
+    <option name="MAIN_CLASS_NAME" value="yg0r2.examples.layout.LayoutApplication" />
+    <module name="layout.main" />
+    <extension name="coverage">
+      <pattern>
+        <option name="PATTERN" value="yg0r2.examples.layout.*" />
+        <option name="ENABLED" value="true" />
+      </pattern>
+    </extension>
+    <method v="2">
+      <option name="NpmBeforeRunTask" enabled="true">
+        <package-json value="$PROJECT_DIR$/ui/package.json" />
+        <command value="run" />
+        <scripts>
+          <script value="build" />
+        </scripts>
+        <node-interpreter value="project" />
+        <envs />
+      </option>
+      <option name="NpmBeforeRunTask" enabled="true">
+        <package-json value="$PROJECT_DIR$/ui/example/package.json" />
+        <command value="run" />
+        <scripts>
+          <script value="build" />
+        </scripts>
+        <node-interpreter value="project" />
+        <envs />
+      </option>
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
