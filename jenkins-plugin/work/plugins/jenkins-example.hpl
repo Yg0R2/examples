@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Group-Id: yg0r2.examples
+Minimum-Java-Version: 15
+Short-Name: jenkins-example
+Extension-Name: jenkins-example
+Long-Name: jenkins-example
+Jenkins-Version: 2.277.1
+Plugin-Version: 0.0.1-SNAPSHOT (private-2021-03-23T16:26:44Z-Tibor_Kovac
+ s1)
+Resource-Path: W:\projects\examples\jenkins-plugin\src\main\webapp
+Libraries: W:\projects\examples\jenkins-plugin\src\main\resources,W:\pro
+ jects\examples\jenkins-plugin\build\classes\java\main,W:\projects\examp
+ les\jenkins-plugin\build\resources\main
+
