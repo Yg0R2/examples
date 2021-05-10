@@ -1,0 +1,24 @@
+database: mysql
+
+spring:
+  cloud.gcp:
+    project-id: eazy-test-project
+    sql:
+      credentials.location: classpath:cloud-sql.json
+      database-name: test_db
+      instance-connection-name: eazy-test-project:europe-west4:main-db
+  datasource:
+    # So app starts despite "table already exists" errors.
+    continue-on-error: true
+    hikari.maximum-pool-size: 1
+    # Enforces database initialization
+    initialization-mode: always
+    # Uncomment if root password is specified
+    password: test
+    # Leave empty for root, uncomment and fill out if you specified a user
+    username: test
+#    url:
+  jpa:
+    hibernate.ddl-auto: update
+    properties.hibernate.format_sql: true
+    show-sql: true

@@ -1,0 +1,12 @@
+
+* Enable `Google Cloud SQL Admin API` under https://console.cloud.google.com/apis/library
+
+* Grant permission for the service account
+ ** Under https://console.cloud.google.com/iam-admin/iam edit the service account
+ ** Grant `Cloud SQL Client` role
+
+* Get credential
+ ** Open https://console.cloud.google.com/iam-admin/serviceaccounts
+ ** Use the "Manage Keys" under the "Actions" column of the service account
+ ** Add new key and download the credential.json
+

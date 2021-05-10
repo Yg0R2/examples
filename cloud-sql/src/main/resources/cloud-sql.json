@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "eazy-test-project",
+  "private_key_id": "013d27c3fbdcd5c2156f070671b84b4e295b0552",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCuYjLqVgxBKrBG\nOFjEjsQ29cLSNi+qnFqn2Ds78I1VNtODruLjw5lBzHKT7U6AHwCz1uiB+UUReCRR\n6v8PslTTVLl5gW7spdQMARJzdzTpgGuos7+z0P6uT0U/XXtCtCEuvpGzMM0nP6Tf\nK4YD33IjO+g1HivlPbFu72WwU/rt2qiuiI93+p6GeDr0GKa6yxKTDJKrgq0MW/il\n72C41wuN8spVIGfU5NBz3/7+S3+dmdpnsRxWzv2qgHsxihJGro7BSUXuhB5fqGWc\n0TbfYbXcyfcULuN9Xa2UGCPHwqXziVZ5qhA2R1qYTMOu02Upt/z7Tf0FtiswfwII\nKZTLTrKPAgMBAAECggEABg6yLxKrHU5iziWh67370d7qlAu+zyHcQk1QDW53MlkT\nstTN29SNC8ySxFGvcuLgzt5tuCoU/JzcQh40GvL6YFbmlHJrDHxcJ8iXv/wJkfzc\ngIEx7Qia+CoXwTI5mGEScAG9pOhSkAT1cK0d3B+UYuXvVH0GUFG6ypw1P5FDO6TY\nhWU5cvAVTW5ezZfO3HhnTvghnawwIRtJ9PCFOk8LxonEKJsnVhmDxUs/ygTym9Fz\nCXJT3rWa5vTYaNsXksP7aNO+5z3/sAmqK8rw8vg6b6xfoyuSpvbn2AKHT3svD0Ab\nfK34RFfskNEXpXXWiJX5yhKIHrU6C/mqYkdCiB3tlQKBgQDtG0FVZRIfpavOe9bF\nym68GGmyObhsVnzsqlQ3M1ewkSifHXlmbE0pmLR9t6QPcfzqjJszgKm8Myocu1AF\n3m8DIesVpLSiVoxf75yxK5G3v/xP3BgB+XiVLr8WOKkTOrfHZgAjv2OBZBSXqtC2\nZQ6yJcGZpkknyqHrKFryaRyB0wKBgQC8R3UDSnTd1+UxffremjERcm8VGD425NRp\nr98QsEFT8x0xh3WIUvY9Vxdd0rAjj0vf18iP8CADnCNUixYvDxEGuWInoXqXE5WP\njJTBUAvidcZ6O5um7D69/i+wukhZYM4aNJ4Q3TN5wp+wetG1v7ZZ114l8kA6a8y+\nRG/NITPa1QKBgAFyeSOcSlAHItVPzC/I3IQpYfvEfmuq23hWUc1EcvSQ7j6KX4NQ\nhegLFo7t4AJ4H6MO2KOn1WFgrpEeU461nNfYDSdEqhWTkafEPqCWM317nn6eSUc5\nzpKahnAMSHvlj9mXtciCEolnoviKAlwaocxUjqnxaeDkS7iztlpkadghAoGAJ8Hz\nHJnJadsgI75VjlIDEIsYl9zBrnfNvu+LbAu8D80jmgTftcTHCJbucTp/RVMKE5+O\nU47CQ+DhuQWRzqgg0UmuR24a4/IXv/NQqi2MBOsX2VHjAXGboiUdzvTXOEBv5Sq9\nQhRjvU9yxyJ4TCfKitgmol6wX2XKG1d6QFfFim0CgYBZ+ljM5ZNGmUDS2IHCpiVh\ntoicMYx5PdyARIC1SIPZfwAT/t8xDGS4C+yh2b3hbck38IYfA9Biq7hPUJIzOxAb\ngSZR4nqpyBAhf5u3sE3M2WIGMKjq61Iw2y+kjeR0gepw7bbYFO/XZ9tv6SK+jlJQ\nkGvKGgZdtEXKsz+0IjKnmA==\n-----END PRIVATE KEY-----\n",
+  "client_email": "cloud-sql@eazy-test-project.iam.gserviceaccount.com",
+  "client_id": "108882075439451993416",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/cloud-sql%40eazy-test-project.iam.gserviceaccount.com"
+}
