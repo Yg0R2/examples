@@ -1,3 +1,3 @@
 rootProject.name = "google-cloud"
 
-include("cloud-sql")
+include("calendar", "cloud-sql")

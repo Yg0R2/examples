@@ -1,0 +1,7 @@
+== Calendar
+
+* Enable `Google Calendar API` (and `CalDAV API`) under https://console.cloud.google.com/apis/library
+
+* Create a new Oauth credential
+ ** Add `Google Calendar API` scopes
+ ** Set the redirect URL: `http://localhost:8888/Callback`

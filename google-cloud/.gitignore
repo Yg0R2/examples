@@ -1,1 +1,12 @@
+##
+## Calendar
+##
+
+calendar/src/main/resources/calendar_client.json
+tokens/
+
+##
+## Cloud SQL
+##
+
 cloud-sql/src/main/resources/cloud-sql.json
