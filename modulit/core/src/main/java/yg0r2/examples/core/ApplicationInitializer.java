@@ -1,4 +1,4 @@
-package yg0r2.examples.auth;
+package yg0r2.examples.core;
 
 import org.springframework.boot.web.servlet.ServletContextInitializer;
 import org.springframework.stereotype.Component;

@@ -4,7 +4,7 @@
     <module name="layout.main" />
     <extension name="coverage">
       <pattern>
-        <option name="PATTERN" value="yg0r2.examples.layout.*" />
+        <option name="PATTERN" value="yg0r2.examples.core.*" />
         <option name="ENABLED" value="true" />
       </pattern>
     </extension>

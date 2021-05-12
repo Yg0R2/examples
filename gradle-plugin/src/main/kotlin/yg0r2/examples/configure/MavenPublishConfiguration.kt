@@ -29,23 +29,21 @@ class MavenPublishConfiguration(private val project: Project) {
         }
 
         project.extensions.getByType(PublishingExtension::class.java).apply {
-            if (isRelease) {
-                publications {
-                    create<MavenPublication>("github") {
-                        groupId = project.group.toString()
-                        artifactId = project.name
-                        version = project.version.toString()
+            publications {
+                create<MavenPublication>("github") {
+                    groupId = project.group.toString()
+                    artifactId = project.name
+                    version = project.version.toString()
 
-                        from(project.components.getByName("java"))
+                    from(project.components.getByName("java"))
 
-                        versionMapping {
-                            usage("java-api") {
-                                fromResolutionOf("runtimeClasspath")
-                            }
+                    versionMapping {
+                        usage("java-api") {
+                            fromResolutionOf("runtimeClasspath")
+                        }
 
-                            usage("java-runtime") {
-                                fromResolutionResult()
-                            }
+                        usage("java-runtime") {
+                            fromResolutionResult()
                         }
                     }
                 }

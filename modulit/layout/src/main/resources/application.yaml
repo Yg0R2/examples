@@ -1,16 +1,5 @@
-security.require-ssl: true
+server.port: 8000
 
-server:
-  ssl:
-    enabled: true
-    key-store: classpath:keystore/localhost.p12
-    key-store-password:
-    key-store-type: PKCS12
-  port: 8000
-
-spring:
-  redis:
-    host: localhost
-    port: 6379
-  session:
-    store-type: redis
+spring.profiles.active:
+#  - https
+#  - redis

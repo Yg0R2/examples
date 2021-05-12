@@ -2,10 +2,8 @@ package yg0r2.examples.auth;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;
 
-@EnableRedisHttpSession
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = {"yg0r2.examples.core", "yg0r2.examples.auth"})
 public class AuthApplication {
 
     public static void main(String[] args) {

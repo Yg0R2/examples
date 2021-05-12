@@ -1,16 +1,5 @@
-security.require-ssl: true
+server.port: 8030
 
-server:
-  ssl:
-    enabled: true
-    key-store: classpath:keystore/examples-ssl-key.p12
-    key-store-password: yg0r2-examples
-    key-store-type: PKCS12
-  port: 8030
-
-spring:
-  redis:
-    host: localhost
-    port: 6379
-  session:
-    store-type: redis
+spring.profiles.active:
+#  - https
+#  - redis

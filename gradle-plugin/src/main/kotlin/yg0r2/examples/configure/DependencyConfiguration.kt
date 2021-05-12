@@ -14,6 +14,8 @@ class DependencyConfiguration(private val project: Project) {
     private val uiProject: Project? = getSubProject(project.subprojects, "ui")
     private val webProject: Project? = getSubProject(project.subprojects, "web")
 
+    private val isCoreProject: Boolean = project.name.startsWith("core")
+
     fun apply() {
         apiProject?.let {
             getDependencySet(it, "api").apply {
@@ -62,6 +64,10 @@ class DependencyConfiguration(private val project: Project) {
 
         webProject?.let {
             getDependencySet(it, "api").apply {
+                if (!isCoreProject) {
+                    add(it.dependencies.create("yg0r2.examples", "core-web", "+"))
+                }
+
                 serviceProject?.let { _project -> add(it.dependencies.create(_project)) }
 
                 add(it.dependencies.create("org.springframework.boot", "spring-boot-starter-data-redis"))
@@ -72,6 +78,10 @@ class DependencyConfiguration(private val project: Project) {
 
         project.also {
             getDependencySet(it, "api").apply {
+                if (!isCoreProject) {
+                    add(it.dependencies.create("yg0r2.examples", "core", "+"))
+                }
+
                 webProject?.let { _project -> add(it.dependencies.create(_project)) }
 
                 add(it.dependencies.create("org.springframework.session", "spring-session-data-redis"))

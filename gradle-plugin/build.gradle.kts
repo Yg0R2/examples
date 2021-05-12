@@ -10,7 +10,6 @@ repositories {
 }
 
 group = "yg0r2.examples"
-version = "0.0.1-SNAPSHOT"
 
 gradlePlugin {
     plugins {

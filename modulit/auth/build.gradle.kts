@@ -15,3 +15,4 @@ buildscript {
 }
 
 apply(plugin = "dependency")
+apply(plugin = "java-library")
