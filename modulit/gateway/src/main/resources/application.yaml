@@ -5,15 +5,15 @@ logging.level:
 server.port: 80
 
 spring.cloud.gateway.routes:
-  - id: auth_service_route
-    uri: http://localhost:8010
-    predicates:
-      - Path=/auth/**
-    filters:
-      - RewritePath=/auth(?<segment>/?.*), $\{segment}
-#      - name: Logging
-#        args:
-#          baseMessage: My Custom Message
-#          preLogging: true
-#          postLogging: true
-      - Logging=My Custom Message, true, true
+#  - id: auth_service_route
+#    uri: http://localhost:8010
+#    predicates:
+#      - Path=/auth/**
+#    filters:
+#      - RewritePath=/auth(?<segment>/?.*), $\{segment}
+##      - name: Logging
+##        args:
+##          baseMessage: My Custom Message
+##          preLogging: true
+##          postLogging: true
+#      - Logging=My Custom Message, true, true

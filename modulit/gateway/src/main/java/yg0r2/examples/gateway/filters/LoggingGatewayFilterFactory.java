@@ -47,6 +47,12 @@ public class LoggingGatewayFilterFactory extends AbstractGatewayFilterFactory<Lo
         private boolean preLogger;
         private boolean postLogger;
 
+        public Config(String baseMessage, boolean preLogger, boolean postLogger) {
+            this.baseMessage = baseMessage;
+            this.preLogger = preLogger;
+            this.postLogger = postLogger;
+        }
+
         public String getBaseMessage() {
             return baseMessage;
         }
