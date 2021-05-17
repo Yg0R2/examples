@@ -1,0 +1,11 @@
+# Disable registry registration to itself
+eureka.client:
+  fetch-registry: false
+  register-with-eureka: false
+
+# Disable error log for running only 1 instance of Eureka
+#logging.level:
+#  com.netflix.eureka: OFF
+#  com.netflix.discovery: OFF
+
+server.port: 8761

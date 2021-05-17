@@ -4,6 +4,8 @@ client.user:
 
 server.port: 8010
 
-spring.profiles.active:
-#  - https
-#  - redis
+spring:
+  application.name: auth
+  profiles.active:
+#    - https
+#    - redis

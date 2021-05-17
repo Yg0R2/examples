@@ -31,24 +31,25 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
-            .cors()
-                .and()
-            .csrf()
-                .disable()
-            .httpBasic()
-                .disable()
+//            .cors()
 //                .and()
-            .formLogin()
-                .loginPage("https://localhost/auth/sign-in").permitAll()
-                .and()
-            .logout()
-                .permitAll()
-                .and()
+            .csrf()
+                .disable() // https://github.com/spring-cloud/spring-cloud-netflix/issues/2754#issuecomment-372808529
+//            .httpBasic()
+//                .disable()
+//                .and()
+//            .formLogin()
+//                .loginPage("https://localhost/auth/sign-in").permitAll()
+//                .and()
+//            .logout()
+//                .permitAll()
+//                .and()
             .authorizeRequests()
-                .antMatchers(HttpMethod.GET, "/", "/static/**").permitAll()
-                .antMatchers(HttpMethod.GET, "/sign-in").permitAll()
-                .antMatchers(HttpMethod.POST, "/api/login").permitAll()
-                .anyRequest().authenticated();
+//                .antMatchers(HttpMethod.GET, "/", "/static/**").permitAll()
+//                .antMatchers(HttpMethod.GET, "/sign-in").permitAll()
+//                .antMatchers(HttpMethod.POST, "/api/login").permitAll()
+//                .anyRequest().authenticated();
+                .anyRequest().permitAll();
     }
 
 }

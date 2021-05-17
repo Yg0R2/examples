@@ -19,7 +19,10 @@ buildscript {
 }
 
 apply(plugin = "dependency")
-apply(plugin = "java-library")
+
+plugins {
+    `java-library`
+}
 
 MavenPublishConfiguration(rootProject).apply()
 
@@ -35,4 +38,10 @@ tasks {
     named("jar", Jar::class.java) {
         enabled = true
     }
+}
+
+dependencies {
+    api("org.springframework.boot", "spring-boot-starter-data-redis")
+
+    api("org.springframework.session", "spring-session-data-redis")
 }

@@ -1,5 +1,11 @@
+management.endpoints:
+  enabled-by-default: true
+  info.enabled: true
+
 server.port: 8000
 
-spring.profiles.active:
-#  - https
-#  - redis
+spring:
+  application.name: layout
+  profiles.active:
+#    - https
+#    - redis

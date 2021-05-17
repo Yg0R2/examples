@@ -1,6 +1,7 @@
 package yg0r2.examples
 
 import io.spring.gradle.dependencymanagement.DependencyManagementPlugin
+import io.spring.gradle.dependencymanagement.internal.dsl.StandardDependencyManagementExtension
 import org.gradle.api.Action
 import org.gradle.api.JavaVersion
 import org.gradle.api.Plugin
@@ -39,6 +40,12 @@ class DependencyPlugin : Plugin<Project> {
                 project.repositories.mavenLocal(),
                 project.repositories.mavenCentral()
             ))
+
+            it.configure<StandardDependencyManagementExtension> {
+                imports {
+                    mavenBom("org.springframework.cloud:spring-cloud-dependencies:+")
+                }
+            }
         }
 
         project.subprojects.forEach {

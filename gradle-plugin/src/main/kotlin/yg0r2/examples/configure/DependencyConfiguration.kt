@@ -69,10 +69,6 @@ class DependencyConfiguration(private val project: Project) {
                 }
 
                 serviceProject?.let { _project -> add(it.dependencies.create(_project)) }
-
-                add(it.dependencies.create("org.springframework.boot", "spring-boot-starter-data-redis"))
-                add(it.dependencies.create("org.springframework.boot", "spring-boot-starter-security"))
-                add(it.dependencies.create("org.springframework.boot", "spring-boot-starter-web"))
             }
         }
 
@@ -83,8 +79,6 @@ class DependencyConfiguration(private val project: Project) {
                 }
 
                 webProject?.let { _project -> add(it.dependencies.create(_project)) }
-
-                add(it.dependencies.create("org.springframework.session", "spring-session-data-redis"))
             }
 
             getDependencySet(it, "testImplementation").apply {
