@@ -1,0 +1,13 @@
+logging.level:
+  org.springframework.cloud.gateway: DEBUG
+  reactor.netty.http.client: DEBUG
+
+server.port: 80
+
+spring.cloud.gateway.routes:
+  - id: auth_service_route
+    uri: http://localhost:8010
+    predicates:
+      - Path=/auth/**
+    filters:
+      - RewritePath=/auth(?<segment>/?.*), $\{segment}
