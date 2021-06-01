@@ -8,4 +8,4 @@ spring:
 #    password: test
   profiles.active:
 #    - https
-#    - redis
+    - redis

@@ -1,5 +1,6 @@
 package yg0r2.examples.auth.web.security.config;
 
+import org.springframework.security.config.http.SessionCreationPolicy;
 import yg0r2.examples.auth.service.UserServiceAuthenticationProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -31,25 +32,27 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
-//            .cors()
-//                .and()
+            .cors()
+                .and()
             .csrf()
                 .disable() // https://github.com/spring-cloud/spring-cloud-netflix/issues/2754#issuecomment-372808529
-//            .httpBasic()
-//                .disable()
+            .httpBasic()
+                .disable()
 //                .and()
-//            .formLogin()
-//                .loginPage("https://localhost/auth/sign-in").permitAll()
-//                .and()
-//            .logout()
-//                .permitAll()
+            .formLogin()
+                .loginPage("http://auth-service.localhost/sign-in").permitAll()
+                .and()
+            .logout()
+                .permitAll()
+                .and()
+//            .sessionManagement()
+//                .sessionCreationPolicy(SessionCreationPolicy.ALWAYS)
 //                .and()
             .authorizeRequests()
-//                .antMatchers(HttpMethod.GET, "/", "/static/**").permitAll()
-//                .antMatchers(HttpMethod.GET, "/sign-in").permitAll()
-//                .antMatchers(HttpMethod.POST, "/api/login").permitAll()
-//                .anyRequest().authenticated();
-                .anyRequest().permitAll();
+                .antMatchers(HttpMethod.GET, "/", "/static/**").permitAll()
+                .antMatchers(HttpMethod.GET, "/sign-in").permitAll()
+                .antMatchers(HttpMethod.POST, "/api/login").permitAll()
+                .anyRequest().authenticated();
     }
 
 }

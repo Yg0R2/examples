@@ -8,4 +8,4 @@ spring:
   application.name: auth
   profiles.active:
 #    - https
-#    - redis
+    - redis

@@ -8,4 +8,4 @@ spring:
   application.name: layout
   profiles.active:
 #    - https
-#    - redis
+    - redis
