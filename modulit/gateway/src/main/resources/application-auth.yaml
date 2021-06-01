@@ -1,0 +1,7 @@
+spring.cloud.gateway.routes:
+  auth-service-route:
+    uri: http://localhost:8010
+    predicates:
+      - Host=auth-service.localhost
+    filters:
+      - name: ServiceUrlModifyResponse

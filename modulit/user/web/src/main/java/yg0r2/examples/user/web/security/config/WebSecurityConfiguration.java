@@ -19,7 +19,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
             .httpBasic()
                 .disable()
             .formLogin()
-                .loginPage("https://localhost/auth/sign-in")
+                .loginPage("http://localhost/auth/sign-in")
                 .and()
             .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.NEVER)

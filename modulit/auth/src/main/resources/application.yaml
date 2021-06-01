@@ -1,5 +1,5 @@
 client.user:
-  baseUrl: https://localhost:8020
+  baseUrl: http://user-service.localhost
   endpoint: ${client.user.baseUrl}/api/user/exists
 
 server.port: 8010

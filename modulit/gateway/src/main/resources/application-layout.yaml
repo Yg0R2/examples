@@ -1,0 +1,7 @@
+spring.cloud.gateway.routes:
+  layout-service-route:
+    uri: http://localhost:8000
+    predicates:
+      - Host=layout-service.localhost,localhost
+    filters:
+      - name: ServiceUrlModifyResponse

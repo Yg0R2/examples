@@ -18,19 +18,19 @@ export default class App extends React.Component {
 
         <ul>
           <li>
-            <a href='/'>Home</a>
+            <a href='http://layout-service/'>Home</a>
           </li>
           <li>
-            <a href='/auth/sign-in'>Sign-in</a>
+            <a href='http://auth-service/sign-in'>Sign-in</a>
           </li>
           <li>
-            <a href='/other'>Other</a>
+            <a href='http://layout-service/other'>Other</a>
           </li>
           <li>
-            <a href='/backend/api/dummy'>Dummy Service</a>
+            <a href='http://backend-service/api/dummy'>Dummy Service</a>
           </li>
           <li>
-            <a href='/auth/api/logout'>Logout</a>
+            <a href='http://auth-service/api/logout'>Logout</a>
           </li>
         </ul>
       </div>

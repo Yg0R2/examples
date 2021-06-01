@@ -1,0 +1,7 @@
+spring.cloud.gateway.routes:
+  user-service-route:
+    uri: http://localhost:8020
+    predicates:
+      - Host=user-service.localhost
+    filters:
+      - name: ServiceUrlModifyResponse
