@@ -1,0 +1,11 @@
+== Usage in local development
+
+- Install link:https://microk8s.io/[microk8s]
++
+NOTE: To gain access to kubernetes dashboard execute: `microk8s dashboard-proxy`
+
++
+NOTE: To get the _kubeconfig_ which is required for helm/kubectl, execute: `microk8s kubectl config view --raw > kubeconfig.yaml`
+
++
+NOTE: If the _kubeckonfig_ cannot connect to Kubernetes, validate the `clusters.cluster.server` URL.
