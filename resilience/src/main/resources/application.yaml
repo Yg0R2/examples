@@ -1,0 +1,10 @@
+service.client:
+  url: http://localhost:8080/api/dummy
+  resilience:
+    circuitBreaker:
+      name: dummy-circuit-breaker
+      failureRateThreshold: 5
+      waitDurationInOpenState: 1 second
+      ringBufferSizeInHalfOpenState: 10
+      ringBufferSizeInClosedState: 2
+      automaticTransitionFromOpenToHalfOpenEnabled: true
