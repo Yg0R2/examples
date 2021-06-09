@@ -3,4 +3,6 @@ kind: ConfigMap
 metadata:
   name: {{ .Release.Name }}-configmap
 data:
-  myValue: "Hello World!"
+  myValue: "Hello World"
+  drink: {{ .Values.favorite.drink }}
+  food: {{ .Values.favorite.food }}

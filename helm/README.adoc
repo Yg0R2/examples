@@ -9,3 +9,25 @@ NOTE: To get the _kubeconfig_ which is required for helm/kubectl, execute: `micr
 
 +
 NOTE: If the _kubeckonfig_ cannot connect to Kubernetes, validate the `clusters.cluster.server` URL.
+
+== Generate Chart
+
+To see the generated chart what will be installed to Kubernetes use the `helm install [Release.Name] [Chart] --dry-run [-f config.yaml]` command.
+
+.Example: (_kubeconfig_ is provided because of _microk8s_)
+[source,bash]
+----
+helm install dummy-app ./dummy-chart --kubeconfig kubeconfig.yaml --dry-run
+----
+
+.Example: Override default config (values.yaml) via a new config file.
+[source,bash]
+----
+helm install dummy-app ./dummy-chart --kubeconfig kubeconfig.yaml --dry-run -f config.yaml
+----
+
+.Example: Override default config (values.yaml) via command line parameter.
+[source,bash]
+----
+helm install dummy-app ./dummy-chart --kubeconfig kubeconfig.yaml --dry-run --set favorite.food=hamburger
+----
