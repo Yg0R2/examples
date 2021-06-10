@@ -16,10 +16,14 @@ data:
   exercise: {{ $.Values.favorite.exercise | default "nope" | quote }}
   {{- end }}
   toppins: |-
-    {{- range .Values.pizzaToppings }}
-    - {{ . | title | quote }}
+    {{- range $index, $topping := .Values.pizzaToppings }}
+      {{ $index }}: {{ $topping | title | quote }}
     {{- end }}
   sizes: |-
     {{- range tuple "small" "medium" "large"}}
     - {{ . }}
+    {{- end }}
+  favorites:
+    {{- range $key, $value := .Values.favorite }}
+    {{ $key }}: {{ $value | quote }}
     {{- end }}
