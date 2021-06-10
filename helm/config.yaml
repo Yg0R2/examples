@@ -1,2 +1,6 @@
 favorite:
   drink: rum
+
+pizzaToppings:
+  - pineapple
+  - ham
