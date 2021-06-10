@@ -4,5 +4,8 @@ metadata:
   name: {{ .Release.Name }}-configmap
 data:
   myValue: "Hello World"
-  drink: {{ .Values.favorite.drink }}
-  food: {{ .Values.favorite.food }}
+  drink: {{ quote (upper .Values.favorite.drink) }}
+  food: {{ .Values.favorite.food | upper | quote }}
+  multypleDrinks: {{ quote (repeat 5 (printf "%s, " .Values.favorite.drink)) }}
+  multypleFoods: {{ .Values.favorite.drink | printf "%s, " | repeat 5 | quote }}
+  exercise: {{ .Values.favorite.exercise | default "nope" | quote }}
