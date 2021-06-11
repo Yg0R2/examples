@@ -18,14 +18,32 @@ data:
   {{- end }}
   toppins: |-
     {{- range $index, $topping := .Values.pizzaToppings }}
-      {{ $index }}: {{ $topping | title | quote }}
+    {{ $index }}: {{ $topping | title | quote }}
     {{- end }}
   sizes: |-
     {{- range tuple "small" "medium" "large"}}
     - {{ . }}
     {{- end }}
-  favorites:
+  favorites: |-
     {{- range $key, $value := .Values.favorite }}
     {{ $key }}: {{ $value | quote }}
     {{- end }}
 {{ include "dummy.app" . | indent 2 }}
+  iterateWithHardcodedNames: |-
+    {{- range tuple "config1.toml" "config2.toml" "config3.toml" }}
+    {{ . }}: |-
+      {{ $.Files.Get . }}
+    {{- end }}
+  iterateWithFilesGlob: |-
+    {{- range $path, $_ := .Files.Glob "**.toml" }}
+    {{ $path }}: |-
+      {{ $.Files.Get $path }}
+    {{- end }}
+  readAsConfig: |-
+{{ (.Files.Glob "**.toml").AsConfig | indent 4 }}
+  readAsSecret: |-
+{{ (.Files.Glob "**.toml").AsSecrets | indent 4 }}
+  readByLines:
+    {{- range .Files.Lines "foo/bar.txt" }}
+    {{ . }}
+    {{ end }}
