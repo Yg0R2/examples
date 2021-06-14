@@ -1,0 +1,7 @@
+{{- if .Values.configMap -}}
+  {{ include "tentacle.configMap" . }}
+{{- end }}
+
+{{- if .Values.sealedSecrets -}}
+  {{ include "tentacle.sealedSecret" . }}
+{{- end }}

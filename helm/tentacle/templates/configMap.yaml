@@ -1,0 +1,24 @@
+{{- define "tentacle.configMap" }}
+{{- $appFullName := include "tentacle.appFullname" . -}}
+---
+apiVersion: v1
+kind: ConfigMap
+{{- /*{{ include "tentacle.metadata" (merge . (dict "metadataNameSuffix" "configMap")) }}*/}}
+{{ include "tentacle.metadata" . }}
+data:
+  {{- range $key, $value := .Values.configMap.envs }}
+    {{- $key | nindent 2 }}: {{ $value | quote }}
+  {{- end -}}
+
+  {{- if .Values.configMap.envFile }}
+  APP_CONFIG_FILES: "/app/config/env.yaml"
+  env.yaml: |-
+    {{- if kindIs "map" .Values.configMap.envFile -}}
+      {{- range $key, $value := .Values.configMap.envFile }}
+        {{- $key | nindent 4 }}: {{ $value }}
+      {{- end -}}
+    {{- else -}}
+      {{- .Values.configMap.envFile | nindent 4 }}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}

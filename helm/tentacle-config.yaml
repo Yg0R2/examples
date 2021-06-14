@@ -1,0 +1,15 @@
+global:
+  appSuffix: asd
+
+configMap:
+  envs:
+    HELLO: hello
+    HELLO2: "hello 2"
+  envFile:
+    asd: qwe
+    qwe: asd
+
+sealedSecrets:
+  scope: strict-2
+  data:
+    PASSWORD: asdqwe123
