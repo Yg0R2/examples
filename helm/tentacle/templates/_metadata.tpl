@@ -1,5 +1,5 @@
 {{- define "tentacle.metadata" -}}
-{{- $appFullName := include "tentacle.appFullname" . -}}
+{{- $appFullName := include "tentacle.helpers.appFullname" . -}}
 metadata:
   name: {{ $appFullName }}
   namespace: {{ .Release.Namespace }}

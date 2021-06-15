@@ -1,0 +1,7 @@
+global:
+  appSuffix: asd
+
+configMap:
+  envs:
+    ASD: qwe
+    QWE: "asd 2"
