@@ -8,8 +8,11 @@ configMap:
   envFile:
     asd: qwe
     qwe: asd
+    logger:
+      com:
+        asd: INFO
 
-sealedSecrets:
+sealedSecret:
   scope: strict-2
   data:
     PASSWORD: asdqwe123

@@ -1,4 +1,4 @@
-{{- define "tentacle.configMap" }}
+{{- define "tentacle.configMap.tpl" }}
 ---
 apiVersion: v1
 kind: ConfigMap
@@ -18,4 +18,13 @@ data:
       {{- .Values.configMap.envFile | nindent 4 }}
     {{- end -}}
   {{- end -}}
+{{- end -}}
+
+{{- define "tentacle.configMap" -}}
+  {{- if .Values.configMap }}
+    {{- include "tentacle.helpers.merge" (append (list . "configMap") "tentacle.configMap.tpl") }}
+  {{- end }}
+{{- end -}}
+
+{{- define "configMap" }}
 {{- end -}}

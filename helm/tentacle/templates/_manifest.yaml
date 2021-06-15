@@ -1,9 +1,5 @@
 {{- define "tentacle.manifest" -}}
-  {{- if .Values.configMap }}
-    {{- include "tentacle.configMap" . }}
-  {{- end }}
-
-  {{- if .Values.sealedSecrets }}
-    {{- include "tentacle.sealedSecret" . }}
-  {{- end }}
+  {{ include "tentacle.configMap" . | nindent 0 }}
+---
+  {{ include "tentacle.sealedSecret" . | nindent 0 }}
 {{- end -}}
