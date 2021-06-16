@@ -1,1 +1,12 @@
-global: {}
+global:
+  appSuffix: tentacle
+
+configMap:
+  envs:
+    TENTACLE_CONFIGMAP_VALUES: velue
+    OVERRIDE_VALUE: tentacle_values
+
+sealedSecret:
+  data:
+    TENTACLE_SECRET_VALUES: value
+    OVERRIDE_VALUE: tentacle_values

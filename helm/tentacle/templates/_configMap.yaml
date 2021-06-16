@@ -1,5 +1,4 @@
-{{- define "tentacle.configMap.tpl" }}
----
+{{- define "tentacle.configMap.tpl" -}}
 apiVersion: v1
 kind: ConfigMap
 {{- /*{{ include "tentacle.metadata" (merge . (dict "metadataNameSuffix" "configMap")) }}*/}}
@@ -22,8 +21,14 @@ data:
 
 {{- define "tentacle.configMap" -}}
   {{- if .Values.configMap }}
-    {{- include "tentacle.helpers.merge" (append (list . "configMap") "tentacle.configMap.tpl") }}
-  {{- end }}
+    {{- $tentacleValues := dict "Values" .Values.tentacle -}}
+    {{- $overrideValues := dict "Values" (omit .Values "tentacle") -}}
+    {{- $noValues := omit . "Values" -}}
+
+    {{- with merge $noValues $overrideValues $tentacleValues -}}
+      {{- include "tentacle.helpers.merge" (append (list . "configMap") "tentacle.configMap.tpl") }}
+    {{- end -}}
+  {{- end -}}
 {{- end -}}
 
 {{- define "configMap" }}

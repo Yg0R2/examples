@@ -1,7 +1,12 @@
 global:
-  appSuffix: asd
+  appSuffix: dummy-values
 
 configMap:
   envs:
-    ASD: qwe
-    QWE: "asd 2"
+    DUMMY_CONFIGMAP_VALUES: value
+    OVERRIDE_VALUE: dummy_values
+
+sealedSecret:
+  data:
+    DUMMY_SECRET_VALUES: value
+    OVERRIDE_VALUE: dummy_values

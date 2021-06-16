@@ -1,18 +1,15 @@
 global:
-  appSuffix: asd
+  appSuffix: dummy-config
 
 configMap:
   envs:
-    HELLO: hello
-    HELLO2: "hello 2"
+    DUMMY_CONFIGMAP_CONFIG: value
+    OVERRIDE_VALUE: dummy_config
   envFile:
-    asd: qwe
-    qwe: asd
-    logger:
-      com:
-        asd: INFO
+    DUMMY_CONFIGMAP_ENVFILE_CONFIG: value
 
 sealedSecret:
-  scope: strict-2
+  scope: strict
   data:
-    PASSWORD: asdqwe123
+    DUMMY_SECRET_CONFIG: value
+    OVERRIDE_VALUE: dummy_config
