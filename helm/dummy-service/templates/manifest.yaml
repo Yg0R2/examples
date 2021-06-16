@@ -1,1 +1,1 @@
-{{- include "tentacle.manifest" . }}
+{{ include "tentacle.manifest" . }}

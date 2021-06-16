@@ -1,5 +1,9 @@
 {{- define "tentacle.manifest" -}}
   {{ include "tentacle.configMap" . | nindent 0 }}
 ---
+  {{ include "tentacle.deployment" . | nindent 0 }}
+---
   {{ include "tentacle.sealedSecret" . | nindent 0 }}
+---
+  {{ include "tentacle.service" . | nindent 0 }}
 {{- end -}}

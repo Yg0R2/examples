@@ -8,8 +8,22 @@ configMap:
   envFile:
     DUMMY_CONFIGMAP_ENVFILE_CONFIG: value
 
+deployment:
+  hpa:
+    enabled: false
+    minReplicas: 1
+    maxReplicas: 1
+    targetCPUUtilizationPercentage: 60
+
 sealedSecret:
   scope: strict
   data:
     DUMMY_SECRET_CONFIG: value
     OVERRIDE_VALUE: dummy_config
+
+service:
+  type: ClusterIP
+  port: 80
+  containerPort: 8080
+  adminPort: 8081
+  containerAdminPort: 8081

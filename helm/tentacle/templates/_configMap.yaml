@@ -11,12 +11,12 @@ data:
   {{- if .Values.configMap.envFile }}
   APP_CONFIG_FILES: "/app/config/env.yaml"
   env.yaml: |-
-    {{- if kindIs "map" .Values.configMap.envFile -}}
+    {{- if kindIs "map" .Values.configMap.envFile }}
       {{- toYaml .Values.configMap.envFile | nindent 4 }}
-    {{- else -}}
+    {{- else }}
       {{- .Values.configMap.envFile | nindent 4 }}
-    {{- end -}}
-  {{- end -}}
+    {{- end }}
+  {{- end }}
 {{- end -}}
 
 {{- define "tentacle.configMap" -}}
@@ -25,11 +25,11 @@ data:
     {{- $overrideValues := dict "Values" (omit .Values "tentacle") -}}
     {{- $noValues := omit . "Values" -}}
 
-    {{- with merge $noValues $overrideValues $tentacleValues -}}
+    {{- with merge $noValues $overrideValues $tentacleValues }}
       {{- include "tentacle.helpers.merge" (append (list . "configMap") "tentacle.configMap.tpl") }}
-    {{- end -}}
-  {{- end -}}
+    {{- end }}
+  {{- end }}
 {{- end -}}
 
-{{- define "configMap" }}
+{{- define "configMap" -}}
 {{- end -}}

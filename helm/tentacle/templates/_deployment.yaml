@@ -1,0 +1,30 @@
+{{- define "tentacle.deployment.tpl" -}}
+{{- $appFullName := include "tentacle.helpers.appFullname" . -}}
+
+apiVersion: apps/v1
+kind: Deployment
+{{ include "tentacle.metadata" . }}
+spec:
+  selector:
+    matchLabels:
+      app: {{ $appFullName }}
+  template:
+    metadata:
+      labels:
+        app: {{ $appFullName }}
+{{- end -}}
+
+{{- define "tentacle.deployment" -}}
+  {{- if .Values.deployment }}
+    {{- $tentacleValues := dict "Values" .Values.tentacle -}}
+    {{- $overrideValues := dict "Values" (omit .Values "tentacle") -}}
+    {{- $noValues := omit . "Values" -}}
+
+    {{- with merge $noValues $overrideValues $tentacleValues }}
+      {{- include "tentacle.helpers.merge" (append (list . "deployment") "tentacle.deployment.tpl") }}
+    {{- end }}
+  {{- end }}
+{{- end -}}
+
+{{- define "deployment" -}}
+{{- end -}}

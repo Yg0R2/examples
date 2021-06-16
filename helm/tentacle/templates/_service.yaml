@@ -1,0 +1,35 @@
+{{- define "tentacle.service.tpl" -}}
+apiVersion: v1
+kind: Service
+{{ include "tentacle.metadata" . }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - name: main
+      port: {{ .Values.service.port }}
+      targetPort: {{ .Values.service.containerPort }}
+      protocol: TCP
+    {{- if .Values.service.adminPort }}
+    - name: admin
+      port: {{ .Values.service.adminPort }}
+      targetPort: {{ .Values.service.containerAdminPort }}
+      protocol: TCP
+    {{- end }}
+  selector:
+    app: {{ include "tentacle.helpers.appFullname" . }}
+{{- end -}}
+
+{{- define "tentacle.service" -}}
+  {{- if .Values.service }}
+    {{- $tentacleValues := dict "Values" .Values.tentacle -}}
+    {{- $overrideValues := dict "Values" (omit .Values "tentacle") -}}
+    {{- $noValues := omit . "Values" -}}
+
+    {{- with merge $noValues $overrideValues $tentacleValues }}
+      {{- include "tentacle.helpers.merge" (append (list . "service") "tentacle.service.tpl") }}
+    {{- end }}
+  {{- end }}
+{{- end -}}
+
+{{- define "service" }}
+{{- end -}}
