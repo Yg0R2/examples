@@ -1,6 +1,6 @@
 {{- define "tentacle.deployment.tpl" -}}
 {{- $appFullName := include "tentacle.helpers.appFullname" . -}}
-
+---
 apiVersion: apps/v1
 kind: Deployment
 {{ include "tentacle.metadata" . }}

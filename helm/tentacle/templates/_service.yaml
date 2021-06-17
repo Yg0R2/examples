@@ -1,4 +1,5 @@
 {{- define "tentacle.service.tpl" -}}
+---
 apiVersion: v1
 kind: Service
 {{ include "tentacle.metadata" . }}
