@@ -29,8 +29,12 @@ This takes an array of three values:
 */}}
 {{- define "tentacle.helpers.merge" -}}
   {{- $top := first . -}}
-  {{- $overrides := fromYaml (include (index . 1) $top) | default (dict ) -}}
-  {{- $tpl := fromYaml (include (index . 2) $top) | default (dict ) -}}
+  {{- $overrides := (dict ) -}}
 
-  {{- toYaml (merge $overrides $tpl) -}}
+  {{- range (rest .) -}}
+    {{- $tpl := fromYaml (include . $top) | default (dict ) -}}
+    {{- $overrides = (merge $overrides $tpl) -}}
+  {{- end -}}
+
+  {{- toYaml $overrides -}}
 {{- end -}}

@@ -1,0 +1,41 @@
+{{- define "merge" -}}
+{{/*  {{- $top := first . -}}*/}}
+  {{- $overrides := (dict ) -}}
+
+  {{- range (rest .) -}}
+    {{- $tpl := fromYaml (include . (dict )) | default (dict ) -}}
+    {{- $overrides = (merge $overrides $tpl) -}}
+  {{- end -}}
+
+  {{- toYaml $overrides -}}
+{{- end -}}
+
+{{- define "list1" -}}
+list:
+  a1: l1-a1
+  a2: l1-a2
+  a3: l1-a3
+  c1: l1-c1
+  b1: l1-b1
+{{- end -}}
+
+{{- define "list2" -}}
+list:
+  b1: l2-b1
+  b2: l2-b2
+  b3: l2-b3
+  a2: l2-a2
+  c2: l2-c2
+{{- end -}}
+
+{{- define "list3" -}}
+list:
+  c1: l3-c1
+  c2: l3-c2
+  c3: l3-c3
+  a3: l3-a3
+  b3: l3-b3
+{{- end -}}
+
+hello: asd
+{{ include "merge" (list . "list1" "list2" "list3") }}

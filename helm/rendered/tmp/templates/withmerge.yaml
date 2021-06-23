@@ -1,0 +1,23 @@
+---
+# Source: tmp/templates/withmerge.yaml
+asd: 123
+tentacle: value1
+
+
+
+
+
+
+
+
+
+
+
+together:
+  cn: tmp
+  data:
+    data1: value1
+    key: "map[Capabilities:map[APIVersions:[v1 admissionregistration.k8s.io/v1 admissionregistration.k8s.io/v1beta1 internal.apiserver.k8s.io/v1alpha1 apps/v1 apps/v1beta1 apps/v1beta2 authentication.k8s.io/v1 authentication.k8s.io/v1beta1 authorization.k8s.io/v1 authorization.k8s.io/v1beta1 autoscaling/v1 autoscaling/v2beta1 autoscaling/v2beta2 batch/v1 batch/v1beta1 batch/v2alpha1 certificates.k8s.io/v1 certificates.k8s.io/v1beta1 coordination.k8s.io/v1beta1 coordination.k8s.io/v1 discovery.k8s.io/v1alpha1 discovery.k8s.io/v1beta1 events.k8s.io/v1 events.k8s.io/v1beta1 extensions/v1beta1 flowcontrol.apiserver.k8s.io/v1alpha1 flowcontrol.apiserver.k8s.io/v1beta1 networking.k8s.io/v1 networking.k8s.io/v1beta1 node.k8s.io/v1 node.k8s.io/v1alpha1 node.k8s.io/v1beta1 policy/v1beta1 rbac.authorization.k8s.io/v1 rbac.authorization.k8s.io/v1beta1 rbac.authorization.k8s.io/v1alpha1 scheduling.k8s.io/v1alpha1 scheduling.k8s.io/v1beta1 scheduling.k8s.io/v1 storage.k8s.io/v1beta1 storage.k8s.io/v1 storage.k8s.io/v1alpha1 apiextensions.k8s.io/v1beta1 apiextensions.k8s.io/v1] HelmVersion:map[git_commit:041ce5a2c17a58be0fcd5f5e16fb3e7e95fea622 git_tree_state:dirty go_version:go1.15.8 version:v3.5.3] KubeVersion:map[Major:1 Minor:20 Version:v1.20.0]] Chart:map[apiVersion:v2 appVersion:1.16.0 description:A Helm chart for Kubernetes name:tmp type:application version:0.1.0] Files:map[.helmignore:IyBQYXR0ZXJucyB0byBpZ25vcmUgd2hlbiBidWlsZGluZyBwYWNrYWdlcy4KIyBUaGlzIHN1cHBvcnRzIHNoZWxsIGdsb2IgbWF0Y2hpbmcsIHJlbGF0aXZlIHBhdGggbWF0Y2hpbmcsIGFuZAojIG5lZ2F0aW9uIChwcmVmaXhlZCB3aXRoICEpLiBPbmx5IG9uZSBwYXR0ZXJuIHBlciBsaW5lLgouRFNfU3RvcmUKIyBDb21tb24gVkNTIGRpcnMKLmdpdC8KLmdpdGlnbm9yZQouYnpyLwouYnpyaWdub3JlCi5oZy8KLmhnaWdub3JlCi5zdm4vCiMgQ29tbW9uIGJhY2t1cCBmaWxlcwoqLnN3cAoqLmJhawoqLnRtcAoqLm9yaWcKKn4KIyBWYXJpb3VzIElERXMKLnByb2plY3QKLmlkZWEvCioudG1wcm9qCi52c2NvZGUvCg==] Release:map[IsInstall:true IsUpgrade:false Name:qwe Namespace:default Revision:1 Service:Helm] Template:map[BasePath:tmp/templates Name:tmp/templates/withmerge.yaml] Values:map[asds:map[1:qwe 2:asd 3:zxc] tentacle:map[tentacle_key1:value1] tentacle_key1:value1]]"
+    chart: map[apiVersion:v2 appVersion:1.16.0 description:A Helm chart for Kubernetes name:tmp type:application version:0.1.0]
+    chartName: tmp
+    values: map[asds:map[1:qwe 2:asd 3:zxc] tentacle:map[tentacle_key1:value1] tentacle_key1:value1]

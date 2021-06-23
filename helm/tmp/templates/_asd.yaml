@@ -1,0 +1,8 @@
+asdValues:
+{{- range $key, $value := .Values.asds -}}
+  {{- with merge (dict "_key" $key "_value" $value) $ -}}
+    {{- $key | nindent 2 }}: {{ $value }}
+  {{- end -}}
+{{- end -}}
+
+{{ $._key }}

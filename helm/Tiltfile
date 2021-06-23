@@ -1,0 +1,6 @@
+print('Hello Tiltfile')
+
+allow_k8s_contexts('microk8s')
+
+manifest = helm('./tentacle', name='dummy')
+k8s_yaml(manifest)

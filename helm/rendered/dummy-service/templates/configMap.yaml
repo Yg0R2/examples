@@ -1,0 +1,17 @@
+---
+# Source: dummy-service/templates/configMap.yaml
+apiVersion: v1
+data:
+  APP_CONFIG_FILES: /app/config/env.yaml
+  DUMMY_CONFIGMAP_CONFIG: value
+  DUMMY_CONFIGMAP_VALUES: value
+  OVERRIDE_VALUE: dummy_config
+  TENTACLE_CONFIGMAP_VALUES: velue
+  env.yaml: 'DUMMY_CONFIGMAP_ENVFILE_CONFIG: value'
+kind: ConfigMap
+metadata:
+  labels:
+    app: dummy-service-dummy-config
+    helm.sh/chart: dummy-service-0.1.0
+  name: dummy-service-dummy-config
+  namespace: default

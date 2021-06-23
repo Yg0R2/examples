@@ -1,0 +1,76 @@
+---
+# Source: dummy-service/templates/manifest.yaml
+apiVersion: v1
+data:
+  APP_CONFIG_FILES: /app/config/env.yaml
+  DUMMY_CONFIGMAP_CONFIG: value
+  DUMMY_CONFIGMAP_VALUES: value
+  OVERRIDE_VALUE: dummy_config
+  TENTACLE_CONFIGMAP_VALUES: velue
+  env.yaml: 'DUMMY_CONFIGMAP_ENVFILE_CONFIG: value'
+kind: ConfigMap
+metadata:
+  labels:
+    app: dummy-service-dummy-config
+    helm.sh/chart: dummy-service-0.1.0
+  name: dummy-service-dummy-config
+  namespace: default
+---
+# Source: dummy-service/templates/manifest.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: dummy-service-dummy-config
+    helm.sh/chart: dummy-service-0.1.0
+  name: dummy-service-dummy-config
+  namespace: default
+spec:
+  ports:
+  - name: main
+    port: 80
+    protocol: TCP
+    targetPort: 8080
+  - name: admin
+    port: 8081
+    protocol: TCP
+    targetPort: 8081
+  selector:
+    app: dummy-service-dummy-config
+  type: ClusterIP
+---
+# Source: dummy-service/templates/manifest.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: dummy-service-dummy-config
+    helm.sh/chart: dummy-service-0.1.0
+  name: dummy-service-dummy-config
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      app: dummy-service-dummy-config
+  template:
+    metadata:
+      labels:
+        app: dummy-service-dummy-config
+---
+# Source: dummy-service/templates/manifest.yaml
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  annotations:
+    sealedsecrets.bitnami.com/scope: strict
+  labels:
+    app: dummy-service-dummy-config
+    helm.sh/chart: dummy-service-0.1.0
+  name: dummy-service-dummy-config
+  namespace: default
+spec:
+  encryptedData:
+    DUMMY_SECRET_CONFIG: value
+    DUMMY_SECRET_VALUES: value
+    OVERRIDE_VALUE: dummy_config
+    TENTACLE_SECRET_VALUES: value
