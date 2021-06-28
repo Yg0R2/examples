@@ -3,7 +3,7 @@
   {{- $overrideValues := dict "Values" (omit .Values "tentacle") -}}
   {{- $noValues := omit . "Values" -}}
 
-  {{- toYaml (merge $noValues $overrideValues $tentacleValues $) -}}
+  {{- (merge $noValues $overrideValues $tentacleValues) -}}
 {{- end -}}
 
 {{- define "with.merge" -}}
@@ -34,8 +34,8 @@ tentacle: {{ .Values.tentacle.tentacle_key1 }}
 {{/*  {{- end }}*/}}
 
 together:
-  cn: {{ .Chart.Name }}
-  {{- with (fromYaml (include "with.tpl" .)) -}}
+  cn: {{ .Chart.Name | default "nope" }}
+  {{- with (include "with.tpl" .) | dict -}}
     {{- include "p1" . | nindent 2 }}
 {{/*    {{- include "with.merge" (list . "p1" "p2") | nindent 4 }}*/}}
   {{- end -}}
@@ -54,10 +54,10 @@ together:
 {{- define "p1" -}}
 data:
   data1: value1
-  key: {{ . | quote }}
-  chart: {{ .Chart | default "no chart" }}
-  chartName: {{ .Chart.Name | default .Chart.name | default "no chart" }}
-  values: {{ .Values | default "no values"}}
+{{/*  key: {{ . | quote }}*/}}
+  chart: {{ .Chart | default "no chart" | quote }}
+  chartName: {{ .Chart.Name | default "no chart" }}
+{{/*  values: {{ .Values | default "no values"}}*/}}
 {{/*  {{ toYaml . }}*/}}
 {{/*  releaseName: {{ .Release.Name }}*/}}
 {{- end -}}

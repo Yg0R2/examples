@@ -1,0 +1,8 @@
+{{/*{{- with (dict "Asd" "value" "Chart" .Chart) -}}*/}}
+
+{{- with (merge (dict "Asd" "value") .) -}} {{/* This is working */}}
+ASD: {{ .Asd }}
+{{/*QWE: {{ . }}*/}}
+chartName: {{ .Chart.Name | quote }}
+{{- include "p1" . | nindent 0 }}
+{{- end -}}
