@@ -1,0 +1,10 @@
+appVersion: 0.0.1-SNAPSHOT
+
+deployment:
+  containers:
+    nginx:
+      image: nginx:alpine
+      ports:
+        - containerPort: 80
+#          hostPort: 80
+  replicas: 1

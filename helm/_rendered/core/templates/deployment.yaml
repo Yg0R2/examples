@@ -1,0 +1,26 @@
+---
+# Source: core/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-test
+  labels:
+    app: nginx-test
+    version: 0.0.1-SNAPSHOT
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx-test
+      version: 0.0.1-SNAPSHOT
+  template:
+    metadata:
+      labels:
+        app: nginx-test
+        version: 0.0.1-SNAPSHOT
+    spec:
+      containers:
+        - name: nginx
+          image: nginx:alpine
+          ports:
+          - containerPort: 80

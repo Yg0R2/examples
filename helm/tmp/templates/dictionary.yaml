@@ -4,5 +4,6 @@
 ASD: {{ .Asd }}
 {{/*QWE: {{ . }}*/}}
 chartName: {{ .Chart.Name | quote }}
-{{- include "p1" . | nindent 0 }}
+{{/*{{- include "p1" . | nindent 0 }}*/}}
+{{- include "with.merge" (list . "p1" "p2") | nindent 0 }}
 {{- end -}}

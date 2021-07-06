@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  {{- include "examples.core.metadata.tpl" . | nindent 2 }}
+spec:
+  replicas: {{ .Values.deployment.replicas }}
+  selector:
+    matchLabels:
+      {{- include "examples.core.labels.tpl" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "examples.core.labels.tpl" . | nindent 8 }}
+    spec:
+      containers:
+        {{- range $containerName, $containerConfig := .Values.deployment.containers }}
+        - name: {{ $containerName }}
+          {{- toYaml $containerConfig | nindent 10 }}
+        {{- end }}

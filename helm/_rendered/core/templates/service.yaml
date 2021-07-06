@@ -1,0 +1,19 @@
+---
+# Source: core/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-test
+  labels:
+    app: nginx-test
+    version: 0.0.1-SNAPSHOT
+spec:
+  ports:
+    - name: nginx
+      port: 80
+      protocol: TCP
+      targetPort: 80
+  selector:
+    app: nginx-test
+    version: 0.0.1-SNAPSHOT
+  type: ClusterIP

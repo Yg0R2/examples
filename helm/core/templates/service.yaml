@@ -1,0 +1,17 @@
+{{- range $containerName, $containerConfig := .Values.deployment.containers }}
+apiVersion: v1
+kind: Service
+metadata:
+  {{- include "examples.core.metadata.tpl" $ | nindent 2 }}
+spec:
+  ports:
+    {{- range $port := $containerConfig.ports }}
+    - name: {{ $containerName }}
+      port: {{ $port.containerPort }}
+      protocol: TCP
+      targetPort: {{ $port.containerPort }}
+    {{- end }}
+  selector:
+    {{- include "examples.core.labels.tpl" $ | nindent 4 }}
+  type: ClusterIP
+{{- end }}
