@@ -1,0 +1,5 @@
+{{- define "configMap" -}}
+metadata:
+  12qwasdr432q: 21ew
+  {{- include (print .Chart.Name ".configMap") . }}
+{{- end -}}

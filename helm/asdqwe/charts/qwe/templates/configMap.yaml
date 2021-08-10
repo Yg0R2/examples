@@ -1,0 +1,6 @@
+{{- template "tentacle.configMap" . -}}
+
+{{- define "qwe.configMap" -}}
+metadata:
+  qweConfig: true
+{{- end -}}

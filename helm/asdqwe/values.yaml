@@ -1,0 +1,6 @@
+global:
+  configMap:
+    envs:
+      TENTACLE_CONFIGMAP_VALUES: "new value"
+      OVERRIDE_VALUE: "not tentacle_values"
+      WTF: "wait what??"

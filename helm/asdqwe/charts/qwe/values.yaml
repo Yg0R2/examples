@@ -1,0 +1,3 @@
+configMap:
+  envs:
+    QWE_VALUES: qwe

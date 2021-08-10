@@ -1,0 +1,7 @@
+{{- template "tentacle.configMap" . -}}
+
+{{- define "asd.configMap" -}}
+metadata:
+  asdConfig: true
+  value: nope
+{{- end -}}

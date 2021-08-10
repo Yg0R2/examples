@@ -1,0 +1,3 @@
+configMap:
+  envs:
+    ASD_VALUES: asd
