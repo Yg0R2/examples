@@ -21,12 +21,13 @@ data:
 {{- end -}}
 
 {{- define "tentacle.configMap" -}}
-  {{- if .Values.configMap }}
-    {{- $tentacleValues := dict "Values" .Values.tentacle -}}
-    {{- $overrideValues := dict "Values" (omit .Values "tentacle") -}}
-    {{- $noValues := omit . "Values" -}}
+  {{- $global := dict "Values" .Values.global -}}
+  {{- $tentacleValues := dict "Values" .Values.tentacle -}}
+  {{- $overrideValues := dict "Values" (omit .Values "tentacle") -}}
+  {{- $noValues := omit . "Values" -}}
 
-    {{- with merge $noValues $overrideValues $tentacleValues }}
+  {{- if .Values.configMap }}
+    {{- with merge $noValues $overrideValues $tentacleValues $global }}
       {{- include "tentacle.helpers.merge" (append (list . "configMap") "tentacle.configMap.tpl") }}
     {{- end }}
   {{- end }}
