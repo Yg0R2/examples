@@ -3,8 +3,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <artifactId>maven-extension-plugin</artifactId>
         <groupId>yg0r2.examples</groupId>
+        <artifactId>maven-extension-plugin</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
