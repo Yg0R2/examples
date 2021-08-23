@@ -4,7 +4,12 @@
 
     <groupId>yg0r2.examples</groupId>
     <artifactId>maven-extension-plugin</artifactId>
+    <packaging>pom</packaging>
     <version>0.0.1-SNAPSHOT</version>
+
+    <modules>
+        <module>extension</module>
+    </modules>
 
     <properties>
         <kotlin.version>1.5.20</kotlin.version>
