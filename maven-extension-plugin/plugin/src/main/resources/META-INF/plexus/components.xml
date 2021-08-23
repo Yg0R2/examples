@@ -1,0 +1,14 @@
+<component-set>
+    <components>
+        <component>
+            <role>org.apache.maven.lifecycle.mapping.LifecycleMapping</role>
+            <role-hint>helm</role-hint>
+            <implementation>org.apache.maven.lifecycle.mapping.DefaultLifecycleMapping</implementation>
+            <configuration>
+                <phases>
+                    <clean>yg0r2.examples:examples-maven-plugin:examples</clean>
+                </phases>
+            </configuration>
+        </component>
+    </components>
+</component-set>
