@@ -9,6 +9,7 @@
 
     <modules>
         <module>extension</module>
+        <module>plugin</module>
     </modules>
 
     <properties>
