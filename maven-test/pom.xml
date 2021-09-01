@@ -27,6 +27,10 @@
             <name>Internal repo</name>
             <url>file://${project.build.outputDirectory}/repository</url>
         </repository>
+        <site>
+            <id>https://github.com/Yg0R2/examples</id>
+            <url>https://github.com/Yg0R2/examples.git</url>
+        </site>
     </distributionManagement>
 
     <dependencyManagement>
@@ -40,10 +44,35 @@
     </dependencyManagement>
 
     <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>yg0r2.examples</groupId>
+                    <artifactId>examples-maven-plugin</artifactId>
+                    <version>0.0.1-SNAPSHOT</version>
+                    <extensions>true</extensions>
+                </plugin>
+            </plugins>
+        </pluginManagement>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-release-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.2.0</version>
+            </plugin>
+            <plugin>
+                <groupId>yg0r2.examples</groupId>
+                <artifactId>examples-maven-plugin</artifactId>
+                <inherited>false</inherited>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-site-plugin</artifactId>
+                <version>3.9.1</version>
             </plugin>
         </plugins>
     </build>

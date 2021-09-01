@@ -16,8 +16,6 @@
             <plugin>
                 <groupId>yg0r2.examples</groupId>
                 <artifactId>examples-maven-plugin</artifactId>
-                <version>0.0.1-SNAPSHOT</version>
-                <extensions>true</extensions>
             </plugin>
         </plugins>
     </build>
