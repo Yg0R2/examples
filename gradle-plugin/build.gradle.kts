@@ -5,6 +5,15 @@ plugins {
     `maven-publish`
 }
 
+buildscript {
+    dependencies {
+        classpath("org.owasp:dependency-check-gradle:6.3.1")
+    }
+}
+
+// https://github.com/dependency-check/dependency-check-gradle
+apply(plugin = "org.owasp.dependencycheck")
+
 repositories {
     mavenCentral()
 }
@@ -57,10 +66,10 @@ publishing {
 }
 
 dependencies {
-    implementation("org.springframework.boot", "spring-boot-gradle-plugin", "2.4.1")
-    implementation("io.spring.gradle", "dependency-management-plugin", "1.0.10.RELEASE")
+    implementation("org.springframework.boot", "spring-boot-gradle-plugin", "+")
+    implementation("io.spring.gradle", "dependency-management-plugin", "+")
 
-    testImplementation("org.junit.jupiter", "junit-jupiter-engine", "5.6.2")
+    testImplementation("org.junit.jupiter", "junit-jupiter-engine", "+")
 }
 
 tasks {
