@@ -1,0 +1,112 @@
+hello from: afterSessionStart
+[INFO] Scanning for projects...
+hello from: afterProjectsRead
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] maven-test-parent                                                  [pom]
+[INFO] maven-test-common                                                  [jar]
+[INFO] maven-test-application                                             [jar]
+[INFO] helm                                                              [helm]
+[INFO] 
+[INFO] ------------------< yg0r2.examples:maven-test-parent >------------------
+[INFO] Building maven-test-parent 0.0.1-SNAPSHOT                          [1/4]
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] >>> examples-maven-plugin:0.0.1-SNAPSHOT:aggregate (default-cli) > compile @ maven-test-parent >>>
+[INFO] 
+[INFO] >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[INFO] Forking maven-test-common 0.0.1-SNAPSHOT
+[INFO] >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ maven-test-common ---
+[WARNING] Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory W:\projects\examples\maven-test\common\src\main\resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:compile (default-compile) @ maven-test-common ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[INFO] Forking maven-test-application 0.0.1-SNAPSHOT
+[INFO] >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ maven-test-application ---
+[WARNING] Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory W:\projects\examples\maven-test\application\src\main\resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:compile (default-compile) @ maven-test-application ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] <<< examples-maven-plugin:0.0.1-SNAPSHOT:aggregate (default-cli) < compile @ maven-test-parent <<<
+[INFO] 
+[INFO] 
+[INFO] --- examples-maven-plugin:0.0.1-SNAPSHOT:aggregate (default-cli) @ maven-test-parent ---
+[INFO] hello from: afterSessionStart
+[INFO] Scanning for projects...
+hello from: afterProjectsRead
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] maven-test-parent                                                  [pom]
+[INFO] maven-test-common                                                  [jar]
+[INFO] maven-test-application                                             [jar]
+[INFO] helm                                                              [helm]
+[INFO] 
+[INFO] ------------------< yg0r2.examples:maven-test-parent >------------------
+[INFO] Building maven-test-parent 0.0.1-SNAPSHOT                          [1/4]
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] --- examples-maven-plugin:0.0.1-SNAPSHOT:examples (default-cli) @ maven-test-parent ---
+[INFO] hello from: ExamplesMojo
+[INFO] 
+[INFO] ------------------< yg0r2.examples:maven-test-common >------------------
+[INFO] Building maven-test-common 0.0.1-SNAPSHOT                          [2/4]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- examples-maven-plugin:0.0.1-SNAPSHOT:examples (default-cli) @ maven-test-common ---
+[INFO] hello from: ExamplesMojo
+[INFO] 
+[INFO] ---------------< yg0r2.examples:maven-test-application >----------------
+[INFO] Building maven-test-application 0.0.1-SNAPSHOT                     [3/4]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- examples-maven-plugin:0.0.1-SNAPSHOT:examples (default-cli) @ maven-test-application ---
+[INFO] hello from: ExamplesMojo
+[INFO] 
+[INFO] ------------------------< yg0r2.examples:helm >-------------------------
+[INFO] Building helm 0.0.1-SNAPSHOT                                       [4/4]
+[INFO] --------------------------------[ helm ]--------------------------------
+[INFO] 
+[INFO] --- examples-maven-plugin:0.0.1-SNAPSHOT:examples (default-cli) @ helm ---
+[INFO] hello from: ExamplesMojo
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary for maven-test-parent 0.0.1-SNAPSHOT:
+[INFO] 
+[INFO] maven-test-parent .................................. SUCCESS [  0.099 s]
+[INFO] maven-test-common .................................. SUCCESS [  0.002 s]
+[INFO] maven-test-application ............................. SUCCESS [  0.003 s]
+[INFO] helm ............................................... SUCCESS [  0.002 s]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  0.555 s
+[INFO] Finished at: 2021-09-01T14:51:21+02:00
+[INFO] ------------------------------------------------------------------------
+[WARNING] The requested profile "development" could not be activated because it does not exist.
+hello from: afterSessionEnd
+
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary for maven-test-parent 0.0.1-SNAPSHOT:
+[INFO] 
+[INFO] maven-test-parent .................................. SUCCESS [  4.618 s]
+[INFO] maven-test-common .................................. SKIPPED
+[INFO] maven-test-application ............................. SKIPPED
+[INFO] helm ............................................... SKIPPED
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  4.980 s
+[INFO] Finished at: 2021-09-01T14:51:21+02:00
+[INFO] ------------------------------------------------------------------------
+[WARNING] The requested profile "development" could not be activated because it does not exist.
+hello from: afterSessionEnd

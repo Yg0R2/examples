@@ -3,16 +3,9 @@ plugins {
     `java-gradle-plugin`
     `kotlin-dsl`
     `maven-publish`
-}
 
-buildscript {
-    dependencies {
-        classpath("org.owasp:dependency-check-gradle:6.3.1")
-    }
+    id("org.owasp.dependencycheck") version "6.3.1"
 }
-
-// https://github.com/dependency-check/dependency-check-gradle
-apply(plugin = "org.owasp.dependencycheck")
 
 repositories {
     mavenCentral()
@@ -74,7 +67,7 @@ dependencies {
 
 tasks {
     jacocoTestReport {
-        reports.html.isEnabled = true
+        reports.html.required.set(true)
     }
 
     test {

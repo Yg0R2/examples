@@ -64,11 +64,11 @@
                 <artifactId>maven-javadoc-plugin</artifactId>
                 <version>3.2.0</version>
             </plugin>
-            <plugin>
-                <groupId>yg0r2.examples</groupId>
-                <artifactId>examples-maven-plugin</artifactId>
-                <inherited>false</inherited>
-            </plugin>
+<!--            <plugin>-->
+<!--                <groupId>yg0r2.examples</groupId>-->
+<!--                <artifactId>examples-maven-plugin</artifactId>-->
+<!--                <inherited>false</inherited>-->
+<!--            </plugin>-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-site-plugin</artifactId>

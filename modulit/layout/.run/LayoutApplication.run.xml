@@ -1,5 +1,8 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="LayoutApplication" type="Application" factoryName="Application" nameIsGenerated="true">
+    <envs>
+      <env name="ENV_MAP" value="{&quot;key3&quot;: &quot;value3&quot;, &quot;key4&quot;: &quot;value4&quot;}" />
+    </envs>
     <option name="MAIN_CLASS_NAME" value="yg0r2.examples.layout.LayoutApplication" />
     <module name="layout.main" />
     <extension name="coverage">

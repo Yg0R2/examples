@@ -3,3 +3,8 @@ server.port: 8000
 spring.profiles.active:
 #  - https
 #  - redis
+
+test:
+  myMap: ${ENV_MAP}
+#    key1: value1
+#    key2: value2
