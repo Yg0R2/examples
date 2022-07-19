@@ -7,4 +7,12 @@ plugins {
 
 subprojects {
     apply(plugin = "spring-jpa-project-convention")
+
+    afterEvaluate {
+        dependencies {
+            implementation(rootProject)
+
+            testFixturesImplementation(rootProject)
+        }
+    }
 }

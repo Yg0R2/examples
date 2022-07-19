@@ -1,5 +1,6 @@
 plugins {
     id("java")
+    id("java-test-fixtures")
 }
 
 apply(plugin = "org.springframework.boot")
