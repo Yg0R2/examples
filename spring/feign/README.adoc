@@ -2,6 +2,94 @@
 
 This project is an example implementation for how to use Spring Feign.
 
-'''
+== Application module
+
+This module contains a simple Spring Boot application with 3 endpoints:
+
+* /api/feign/instant
+** instantly returns with the response
+* /api/feign/slow
+** waits 500ms before returns with the response
+* /api/feign/status?code=
+** 200 -> OK
+** 400 -> BadRequestException
+** 404 -> NotFoundException
+** else -> RuntimeException
+
+NOTE: Each exception handled by the `ApplicationExceptionHandler` to return with the appropriate status code.
+
+== Client module
+
+This module contains Feign clients for the application endpoints.
+There ate 3 clients. A default one, one with custom `ErrorDecoder` and one with `Fallback`.
+
+All clients use the same configuration (`FeignConfiguration`), that adds a `RequestInterceptor`.
+That interceptor adds an `x-custom-header` header and logs `intercept request` message.
+
+Each client is called from an infinite loop to simulate user interactions.
+
+=== DummyClient
+This is a default Feign client.
+(Error handling enabled but it won't be used.)
+
+.console log
+----
+[DummyClient#getInstantValues] ---> GET http://localhost:8090/api/feign/instant HTTP/1.1
+[DummyClient#getInstantValues] x-custom-header: custom header value
+[DummyClient#getInstantValues] ---> END HTTP (0-byte body)
+[DummyClient#getInstantValues] <--- HTTP/1.1 200  (2ms)
+[DummyClient#getInstantValues] connection: keep-alive
+[DummyClient#getInstantValues] content-type: application/json
+[DummyClient#getInstantValues] date: Fri, 12 Aug 2022 16:16:22 GMT
+[DummyClient#getInstantValues] keep-alive: timeout=60
+[DummyClient#getInstantValues] transfer-encoding: chunked
+[DummyClient#getInstantValues] <--- END HTTP (25-byte body)
+instant: [value - 1, value - 2]
+intercept request
+----
+
+=== DummyClientWithErrorHandler
+This Feign client uses a `CustomErrorDecoder` to throw custom exceptions based on the status of the response.
+
+.console log
+----
+[DummyClientWithErrorHandler#getStatus] ---> GET http://localhost:8090/api/feign/status?code=200 HTTP/1.1
+[DummyClientWithErrorHandler#getStatus] <--- HTTP/1.1 200  (2ms)
+status(200): OK
+intercept request
+
+[DummyClientWithErrorHandler#getStatus] ---> GET http://localhost:8090/api/feign/status?code=400 HTTP/1.1
+[DummyClientWithErrorHandler#getStatus] <--- HTTP/1.1 400  (2ms)
+status(400): Bad request
+intercept request
+
+[DummyClientWithErrorHandler#getStatus] ---> GET http://localhost:8090/api/feign/status?code=404 HTTP/1.1
+[DummyClientWithErrorHandler#getStatus] <--- HTTP/1.1 404  (2ms)
+status(404): Not found
+intercept request
+
+[DummyClientWithErrorHandler#getStatus] ---> GET http://localhost:8090/api/feign/status?code=500 HTTP/1.1
+[DummyClientWithErrorHandler#getStatus] <--- HTTP/1.1 500  (1ms)
+status(500): Internal service
+intercept request
+----
+
+=== DummyClientWithFallback
+This Feign client handles errors with `Fallback`.
+In case of an error happens the fallback implementation of the client will be executed.
+
+.console log
+----
+[DummyClientWithFallback#getSlowValues] ---> GET http://localhost:8090/api/feign/slow HTTP/1.1
+[DummyClientWithFallback#getSlowValues] x-custom-header: custom header value
+[DummyClientWithFallback#getSlowValues] ---> END HTTP (0-byte body)
+[DummyClientWithFallback#getSlowValues] <--- ERROR SocketTimeoutException: Read timed out (501ms)
+[DummyClientWithFallback#getSlowValues] java.net.SocketTimeoutException: Read timed out
+[DummyClientWithFallback#getSlowValues] <--- END ERROR
+Client call failed, executing fallback...
+slow: []
+intercept request
+----
+
 == Resources
 - https://www.baeldung.com/spring-cloud-openfeign

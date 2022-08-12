@@ -1,5 +1,25 @@
-server:
-  port: 8080
-
 dummy-service:
   url: http://localhost:8090
+
+feign:
+  circuitbreaker:
+    enabled: true
+  client:
+    config:
+      default:
+        loggerLevel: none
+      dummy-client:
+        loggerLevel: headers
+      dummy-client-with-error-handler:
+        loggerLevel: basic
+      dummy-client-with-fallback:
+        connectTimeout: 500
+        loggerLevel: full
+        readTimeout: 500
+
+logging:
+  level:
+    yg0r2.example.spring.feign.client.client: DEBUG
+
+server:
+  port: 8080
