@@ -1,0 +1,7 @@
+= Spring Feign Example
+
+This project is an example implementation for how to use Spring Feign.
+
+'''
+== Resources
+- https://www.baeldung.com/spring-cloud-openfeign
