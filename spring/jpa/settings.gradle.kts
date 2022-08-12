@@ -6,4 +6,5 @@ pluginManagement {
     }
 }
 
+include("one-to-one")
 include("one-to-many")
